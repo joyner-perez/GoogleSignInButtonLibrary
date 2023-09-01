@@ -5,5 +5,3 @@ before_install:
   - sdk use java
   - sdk install maven
   - mvn -v
-install:
-  - mvn install -Dmaven.javadoc.skip=true -DskipTests

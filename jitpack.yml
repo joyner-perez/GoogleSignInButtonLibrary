@@ -3,5 +3,3 @@ jdk:
 before_install:
   - sdk install java
   - sdk use java
-  - sdk install maven
-  - mvn -v

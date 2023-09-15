@@ -1,8 +1,6 @@
 plugins {
     id ("com.android.library")
     id ("org.jetbrains.kotlin.android")
-    id ("com.github.ben-manes.versions")
-    id ("io.gitlab.arturbosch.detekt")
 }
 
 android {

@@ -12,9 +12,17 @@ android {
 
     defaultConfig {
         minSdk = 24
-        targetSdk = 34
+        aarMetadata {
+            minCompileSdk = 24
+        }
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+        }
     }
 
     buildFeatures {
@@ -43,8 +51,8 @@ android {
 }
 
 dependencies {
-    implementation ("androidx.core:core-ktx:1.10.1")
-    implementation (platform ("androidx.compose:compose-bom:2023.08.00"))
+    implementation ("androidx.core:core-ktx:1.12.0")
+    implementation (platform ("androidx.compose:compose-bom:2023.09.00"))
     implementation ("androidx.compose.material3:material3")
     implementation ("androidx.compose.ui:ui")
     implementation ("androidx.compose.ui:ui-tooling-preview")

@@ -23,7 +23,7 @@ internal fun GoogleSignButtonLargeFab(
         content = {
             Icon(
                 modifier = Modifier
-                    .size(24.dp),
+                    .size(36.dp),
                 tint = MaterialTheme.colorScheme.primary,
                 painter = painterResource(id = fabButtonProperties.googleIcon),
                 contentDescription = "LogoGoogle"

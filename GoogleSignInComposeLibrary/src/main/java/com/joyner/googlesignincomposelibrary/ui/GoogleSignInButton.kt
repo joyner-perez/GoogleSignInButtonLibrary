@@ -9,12 +9,17 @@ import com.joyner.googlesignincomposelibrary.enums.Fab
 import com.joyner.googlesignincomposelibrary.enums.FabExtended
 import com.joyner.googlesignincomposelibrary.enums.Filled
 import com.joyner.googlesignincomposelibrary.enums.FilledTonal
+import com.joyner.googlesignincomposelibrary.enums.IconFilled
+import com.joyner.googlesignincomposelibrary.enums.IconFilledTonal
+import com.joyner.googlesignincomposelibrary.enums.IconOutlined
+import com.joyner.googlesignincomposelibrary.enums.IconStandard
 import com.joyner.googlesignincomposelibrary.enums.LargeFab
 import com.joyner.googlesignincomposelibrary.enums.Outlined
 import com.joyner.googlesignincomposelibrary.enums.SmallFab
 import com.joyner.googlesignincomposelibrary.enums.Text
 import com.joyner.googlesignincomposelibrary.ui.buttons.common.MainCommonGoogleSignButton
 import com.joyner.googlesignincomposelibrary.ui.buttons.fab.MainFabGoogleSignButton
+import com.joyner.googlesignincomposelibrary.ui.buttons.icon.MainIconGoogleSignButton
 
 @Composable
 fun GoogleSignButton(
@@ -36,6 +41,12 @@ fun GoogleSignButton(
             modifier = modifier,
             buttonType = buttonType,
             showIcon = showIcon,
+            onClick = onClick
+        )
+        is IconFilled, is IconFilledTonal, is IconOutlined, is IconStandard -> MainIconGoogleSignButton(
+            modifier = modifier,
+            buttonType = buttonType,
+            enabled = enabled,
             onClick = onClick
         )
     }

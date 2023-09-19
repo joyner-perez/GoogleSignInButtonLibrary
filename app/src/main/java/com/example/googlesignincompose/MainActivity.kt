@@ -8,6 +8,8 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
@@ -22,6 +24,10 @@ import com.joyner.googlesignincomposelibrary.enums.Fab
 import com.joyner.googlesignincomposelibrary.enums.FabExtended
 import com.joyner.googlesignincomposelibrary.enums.Filled
 import com.joyner.googlesignincomposelibrary.enums.FilledTonal
+import com.joyner.googlesignincomposelibrary.enums.IconFilled
+import com.joyner.googlesignincomposelibrary.enums.IconFilledTonal
+import com.joyner.googlesignincomposelibrary.enums.IconOutlined
+import com.joyner.googlesignincomposelibrary.enums.IconStandard
 import com.joyner.googlesignincomposelibrary.enums.LargeFab
 import com.joyner.googlesignincomposelibrary.enums.Outlined
 import com.joyner.googlesignincomposelibrary.enums.SmallFab
@@ -49,6 +55,8 @@ class MainActivity : ComponentActivity() {
 fun GoogleSign() {
     val context = LocalContext.current
     Column(
+        modifier = Modifier
+            .verticalScroll(rememberScrollState()),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -130,6 +138,38 @@ fun GoogleSign() {
             modifier = Modifier.padding(8.dp),
             buttonType = FabExtended(),
             showIcon = false,
+            onClick = {
+                Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show()
+            }
+        )
+
+        GoogleSignButton(
+            modifier = Modifier.padding(8.dp),
+            buttonType = IconFilled(),
+            onClick = {
+                Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show()
+            }
+        )
+
+        GoogleSignButton(
+            modifier = Modifier.padding(8.dp),
+            buttonType = IconFilledTonal(),
+            onClick = {
+                Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show()
+            }
+        )
+
+        GoogleSignButton(
+            modifier = Modifier.padding(8.dp),
+            buttonType = IconOutlined(),
+            onClick = {
+                Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show()
+            }
+        )
+
+        GoogleSignButton(
+            modifier = Modifier.padding(8.dp),
+            buttonType = IconStandard(),
             onClick = {
                 Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show()
             }

@@ -27,8 +27,10 @@ In the future I will be adding more features, if you have any suggestion let me 
 
 🕹 How to use:
 --
-      val context = LocalContext.current
+	val context = LocalContext.current
     Column(
+        modifier = Modifier
+            .verticalScroll(rememberScrollState()),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -110,6 +112,38 @@ In the future I will be adding more features, if you have any suggestion let me 
             modifier = Modifier.padding(8.dp),
             buttonType = FabExtended(),
             showIcon = false,
+            onClick = {
+                Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show()
+            }
+        )
+
+        GoogleSignButton(
+            modifier = Modifier.padding(8.dp),
+            buttonType = IconFilled(),
+            onClick = {
+                Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show()
+            }
+        )
+
+        GoogleSignButton(
+            modifier = Modifier.padding(8.dp),
+            buttonType = IconFilledTonal(),
+            onClick = {
+                Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show()
+            }
+        )
+
+        GoogleSignButton(
+            modifier = Modifier.padding(8.dp),
+            buttonType = IconOutlined(),
+            onClick = {
+                Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show()
+            }
+        )
+
+        GoogleSignButton(
+            modifier = Modifier.padding(8.dp),
+            buttonType = IconStandard(),
             onClick = {
                 Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show()
             }

@@ -4,7 +4,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.joyner.googlesignincomposelibrary.enums.ButtonType
-import com.joyner.googlesignincomposelibrary.enums.Elevated
 import com.joyner.googlesignincomposelibrary.enums.Fab
 import com.joyner.googlesignincomposelibrary.enums.FabExtended
 import com.joyner.googlesignincomposelibrary.enums.LargeFab
@@ -13,7 +12,7 @@ import com.joyner.googlesignincomposelibrary.enums.SmallFab
 @Composable
 internal fun MainFabGoogleSignButton(
     modifier: Modifier = Modifier,
-    buttonType: ButtonType = Elevated(),
+    buttonType: ButtonType = Fab(),
     showIcon: Boolean = true,
     onClick: () -> Unit
 ) {

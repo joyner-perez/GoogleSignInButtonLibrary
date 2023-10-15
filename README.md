@@ -34,41 +34,48 @@ In the future I will be adding more features, if you have any suggestion let me 
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        GoogleSignButton(
+		GoogleSignInFullButton(
+            tokenClientId = stringResource(id = R.string.default_web_client_id),// Your token client id
+            onClick = {
+                Toast.makeText(context, "Result: ${it.result}, token: ${it.idToken}", Toast.LENGTH_SHORT).show()
+            }
+        )
+
+        GoogleSignInButton(
             onClick = {
                 Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show()
             }
         )
 
-        GoogleSignButton(
+        GoogleSignInButton(
             buttonType = Elevated(),
             onClick = {
                 Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show()
             }
         )
 
-        GoogleSignButton(
+        GoogleSignInButton(
             buttonType = Filled(),
             onClick = {
                 Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show()
             }
         )
 
-        GoogleSignButton(
+        GoogleSignInButton(
             buttonType = FilledTonal(),
             onClick = {
                 Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show()
             }
         )
 
-        GoogleSignButton(
+        GoogleSignInButton(
             buttonType = Outlined(),
             onClick = {
                 Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show()
             }
         )
 
-        GoogleSignButton(
+        GoogleSignInButton(
             buttonType = Text(),
             showIcon = false,
             onClick = {
@@ -76,7 +83,7 @@ In the future I will be adding more features, if you have any suggestion let me 
             }
         )
 
-        GoogleSignButton(
+        GoogleSignInButton(
             modifier = Modifier.padding(8.dp),
             buttonType = Fab(),
             onClick = {
@@ -84,7 +91,7 @@ In the future I will be adding more features, if you have any suggestion let me 
             }
         )
 
-        GoogleSignButton(
+        GoogleSignInButton(
             modifier = Modifier.padding(8.dp),
             buttonType = SmallFab(),
             onClick = {
@@ -92,7 +99,7 @@ In the future I will be adding more features, if you have any suggestion let me 
             }
         )
 
-        GoogleSignButton(
+        GoogleSignInButton(
             modifier = Modifier.padding(8.dp),
             buttonType = LargeFab(),
             onClick = {
@@ -100,7 +107,7 @@ In the future I will be adding more features, if you have any suggestion let me 
             }
         )
 
-        GoogleSignButton(
+        GoogleSignInButton(
             modifier = Modifier.padding(8.dp),
             buttonType = FabExtended(),
             onClick = {
@@ -108,7 +115,7 @@ In the future I will be adding more features, if you have any suggestion let me 
             }
         )
 
-        GoogleSignButton(
+        GoogleSignInButton(
             modifier = Modifier.padding(8.dp),
             buttonType = FabExtended(),
             showIcon = false,
@@ -117,7 +124,7 @@ In the future I will be adding more features, if you have any suggestion let me 
             }
         )
 
-        GoogleSignButton(
+        GoogleSignInButton(
             modifier = Modifier.padding(8.dp),
             buttonType = IconFilled(),
             onClick = {
@@ -125,7 +132,7 @@ In the future I will be adding more features, if you have any suggestion let me 
             }
         )
 
-        GoogleSignButton(
+        GoogleSignInButton(
             modifier = Modifier.padding(8.dp),
             buttonType = IconFilledTonal(),
             onClick = {
@@ -133,7 +140,7 @@ In the future I will be adding more features, if you have any suggestion let me 
             }
         )
 
-        GoogleSignButton(
+        GoogleSignInButton(
             modifier = Modifier.padding(8.dp),
             buttonType = IconOutlined(),
             onClick = {
@@ -141,7 +148,7 @@ In the future I will be adding more features, if you have any suggestion let me 
             }
         )
 
-        GoogleSignButton(
+        GoogleSignInButton(
             modifier = Modifier.padding(8.dp),
             buttonType = IconStandard(),
             onClick = {

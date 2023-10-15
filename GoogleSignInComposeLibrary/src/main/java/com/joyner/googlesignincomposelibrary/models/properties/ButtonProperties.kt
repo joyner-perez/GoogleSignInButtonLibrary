@@ -1,7 +1,7 @@
-package com.joyner.googlesignincomposelibrary.models
+package com.joyner.googlesignincomposelibrary.models.properties
 
 import com.joyner.googlesignincomposelibrary.R
 
-open class FabButtonProperties(
+sealed class ButtonProperties(
     val googleIcon: Int = R.drawable.ic_google_button
 )

@@ -1,7 +1,7 @@
-package com.joyner.googlesignincomposelibrary.enums
+package com.joyner.googlesignincomposelibrary.models.types
 
-import com.joyner.googlesignincomposelibrary.models.FabButtonProperties
-import com.joyner.googlesignincomposelibrary.models.FabExtendedButtonProperties
+import com.joyner.googlesignincomposelibrary.models.properties.FabButtonProperties
+import com.joyner.googlesignincomposelibrary.models.properties.FabExtendedButtonProperties
 
 sealed class FabButtonType : ButtonType()
 

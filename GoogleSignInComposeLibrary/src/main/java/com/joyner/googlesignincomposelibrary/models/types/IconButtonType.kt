@@ -1,6 +1,6 @@
-package com.joyner.googlesignincomposelibrary.enums
+package com.joyner.googlesignincomposelibrary.models.types
 
-import com.joyner.googlesignincomposelibrary.models.IconButtonProperties
+import com.joyner.googlesignincomposelibrary.models.properties.IconButtonProperties
 
 sealed class IconButtonType : ButtonType()
 

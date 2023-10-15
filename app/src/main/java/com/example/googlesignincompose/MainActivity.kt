@@ -16,23 +16,26 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.googlesignincompose.ui.theme.GoogleSignInButtonLibraryTheme
-import com.joyner.googlesignincomposelibrary.enums.Elevated
-import com.joyner.googlesignincomposelibrary.enums.Fab
-import com.joyner.googlesignincomposelibrary.enums.FabExtended
-import com.joyner.googlesignincomposelibrary.enums.Filled
-import com.joyner.googlesignincomposelibrary.enums.FilledTonal
-import com.joyner.googlesignincomposelibrary.enums.IconFilled
-import com.joyner.googlesignincomposelibrary.enums.IconFilledTonal
-import com.joyner.googlesignincomposelibrary.enums.IconOutlined
-import com.joyner.googlesignincomposelibrary.enums.IconStandard
-import com.joyner.googlesignincomposelibrary.enums.LargeFab
-import com.joyner.googlesignincomposelibrary.enums.Outlined
-import com.joyner.googlesignincomposelibrary.enums.SmallFab
-import com.joyner.googlesignincomposelibrary.enums.Text
+import com.joyner.googlesignincomposelibrary.models.types.Elevated
+import com.joyner.googlesignincomposelibrary.models.types.Fab
+import com.joyner.googlesignincomposelibrary.models.types.FabExtended
+import com.joyner.googlesignincomposelibrary.models.types.Filled
+import com.joyner.googlesignincomposelibrary.models.types.FilledTonal
+import com.joyner.googlesignincomposelibrary.models.types.IconFilled
+import com.joyner.googlesignincomposelibrary.models.types.IconFilledTonal
+import com.joyner.googlesignincomposelibrary.models.types.IconOutlined
+import com.joyner.googlesignincomposelibrary.models.types.IconStandard
+import com.joyner.googlesignincomposelibrary.models.types.LargeFab
+import com.joyner.googlesignincomposelibrary.models.types.Outlined
+import com.joyner.googlesignincomposelibrary.models.types.SmallFab
+import com.joyner.googlesignincomposelibrary.models.types.Text
 import com.joyner.googlesignincomposelibrary.ui.GoogleSignButton
+import com.joyner.googlesignincomposelibrary.ui.GoogleSignInButton
+import com.joyner.googlesignincomposelibrary.ui.GoogleSignInFullButton
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,41 +63,41 @@ fun GoogleSign() {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        GoogleSignButton(
+        GoogleSignInButton(
             onClick = {
                 Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show()
             }
         )
 
-        GoogleSignButton(
+        GoogleSignInButton(
             buttonType = Elevated(),
             onClick = {
                 Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show()
             }
         )
 
-        GoogleSignButton(
+        GoogleSignInButton(
             buttonType = Filled(),
             onClick = {
                 Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show()
             }
         )
 
-        GoogleSignButton(
+        GoogleSignInButton(
             buttonType = FilledTonal(),
             onClick = {
                 Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show()
             }
         )
 
-        GoogleSignButton(
+        GoogleSignInButton(
             buttonType = Outlined(),
             onClick = {
                 Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show()
             }
         )
 
-        GoogleSignButton(
+        GoogleSignInButton(
             buttonType = Text(),
             showIcon = false,
             onClick = {
@@ -102,7 +105,7 @@ fun GoogleSign() {
             }
         )
 
-        GoogleSignButton(
+        GoogleSignInButton(
             modifier = Modifier.padding(8.dp),
             buttonType = Fab(),
             onClick = {
@@ -110,7 +113,7 @@ fun GoogleSign() {
             }
         )
 
-        GoogleSignButton(
+        GoogleSignInButton(
             modifier = Modifier.padding(8.dp),
             buttonType = SmallFab(),
             onClick = {
@@ -118,7 +121,7 @@ fun GoogleSign() {
             }
         )
 
-        GoogleSignButton(
+        GoogleSignInButton(
             modifier = Modifier.padding(8.dp),
             buttonType = LargeFab(),
             onClick = {
@@ -126,7 +129,7 @@ fun GoogleSign() {
             }
         )
 
-        GoogleSignButton(
+        GoogleSignInButton(
             modifier = Modifier.padding(8.dp),
             buttonType = FabExtended(),
             onClick = {
@@ -134,7 +137,7 @@ fun GoogleSign() {
             }
         )
 
-        GoogleSignButton(
+        GoogleSignInButton(
             modifier = Modifier.padding(8.dp),
             buttonType = FabExtended(),
             showIcon = false,
@@ -143,7 +146,7 @@ fun GoogleSign() {
             }
         )
 
-        GoogleSignButton(
+        GoogleSignInButton(
             modifier = Modifier.padding(8.dp),
             buttonType = IconFilled(),
             onClick = {
@@ -151,7 +154,7 @@ fun GoogleSign() {
             }
         )
 
-        GoogleSignButton(
+        GoogleSignInButton(
             modifier = Modifier.padding(8.dp),
             buttonType = IconFilledTonal(),
             onClick = {
@@ -159,7 +162,7 @@ fun GoogleSign() {
             }
         )
 
-        GoogleSignButton(
+        GoogleSignInButton(
             modifier = Modifier.padding(8.dp),
             buttonType = IconOutlined(),
             onClick = {
@@ -167,11 +170,18 @@ fun GoogleSign() {
             }
         )
 
-        GoogleSignButton(
+        GoogleSignInButton(
             modifier = Modifier.padding(8.dp),
             buttonType = IconStandard(),
             onClick = {
                 Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show()
+            }
+        )
+
+        GoogleSignInFullButton(
+            tokenClientId = stringResource(id = R.string.default_web_client_id),// Your token client id
+            onClick = {
+                Toast.makeText(context, "Result: ${it.result}, token: ${it.idToken}", Toast.LENGTH_SHORT).show()
             }
         )
     }

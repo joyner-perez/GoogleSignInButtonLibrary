@@ -3,11 +3,11 @@ package com.joyner.googlesignincomposelibrary.ui.buttons.icon
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.joyner.googlesignincomposelibrary.enums.ButtonType
-import com.joyner.googlesignincomposelibrary.enums.IconFilled
-import com.joyner.googlesignincomposelibrary.enums.IconFilledTonal
-import com.joyner.googlesignincomposelibrary.enums.IconOutlined
-import com.joyner.googlesignincomposelibrary.enums.IconStandard
+import com.joyner.googlesignincomposelibrary.models.types.ButtonType
+import com.joyner.googlesignincomposelibrary.models.types.IconFilled
+import com.joyner.googlesignincomposelibrary.models.types.IconFilledTonal
+import com.joyner.googlesignincomposelibrary.models.types.IconOutlined
+import com.joyner.googlesignincomposelibrary.models.types.IconStandard
 
 @Composable
 internal fun MainIconGoogleSignButton(
@@ -23,18 +23,21 @@ internal fun MainIconGoogleSignButton(
             enabled = enabled,
             onClick = onClick
         )
+
         is IconFilledTonal -> GoogleSignIconButtonFilledTonal(
             modifier = modifier,
             iconButtonProperties = buttonType.iconButtonProperties,
             enabled = enabled,
             onClick = onClick
         )
+
         is IconOutlined -> GoogleSignIconButtonOutlined(
             modifier = modifier,
             iconButtonProperties = buttonType.iconButtonProperties,
             enabled = enabled,
             onClick = onClick
         )
+
         is IconStandard -> GoogleSignIconButtonStandard(
             modifier = modifier,
             iconButtonProperties = buttonType.iconButtonProperties,

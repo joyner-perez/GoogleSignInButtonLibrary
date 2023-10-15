@@ -1,4 +1,4 @@
-package com.joyner.googlesignincomposelibrary.models
+package com.joyner.googlesignincomposelibrary.models.properties
 
 import com.joyner.googlesignincomposelibrary.R
 

@@ -9,7 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.joyner.googlesignincomposelibrary.models.IconButtonProperties
+import com.joyner.googlesignincomposelibrary.models.properties.IconButtonProperties
 
 @Composable
 internal fun GoogleSignIconButtonFilled(

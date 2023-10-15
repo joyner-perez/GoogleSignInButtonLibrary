@@ -1,6 +1,6 @@
-package com.joyner.googlesignincomposelibrary.enums
+package com.joyner.googlesignincomposelibrary.models.types
 
-import com.joyner.googlesignincomposelibrary.models.CommonButtonProperties
+import com.joyner.googlesignincomposelibrary.models.properties.CommonButtonProperties
 
 sealed class CommonButtonType : ButtonType()
 

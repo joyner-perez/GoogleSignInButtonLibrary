@@ -3,11 +3,11 @@ package com.joyner.googlesignincomposelibrary.ui.buttons.fab
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.joyner.googlesignincomposelibrary.enums.ButtonType
-import com.joyner.googlesignincomposelibrary.enums.Fab
-import com.joyner.googlesignincomposelibrary.enums.FabExtended
-import com.joyner.googlesignincomposelibrary.enums.LargeFab
-import com.joyner.googlesignincomposelibrary.enums.SmallFab
+import com.joyner.googlesignincomposelibrary.models.types.ButtonType
+import com.joyner.googlesignincomposelibrary.models.types.Fab
+import com.joyner.googlesignincomposelibrary.models.types.FabExtended
+import com.joyner.googlesignincomposelibrary.models.types.LargeFab
+import com.joyner.googlesignincomposelibrary.models.types.SmallFab
 
 @Composable
 internal fun MainFabGoogleSignButton(
@@ -22,16 +22,19 @@ internal fun MainFabGoogleSignButton(
             fabButtonProperties = buttonType.fabButtonProperties,
             onClick = onClick
         )
+
         is SmallFab -> GoogleSignButtonSmallFab(
             modifier = modifier,
             fabButtonProperties = buttonType.fabButtonProperties,
             onClick = onClick
         )
+
         is LargeFab -> GoogleSignButtonLargeFab(
             modifier = modifier,
             fabButtonProperties = buttonType.fabButtonProperties,
             onClick = onClick
         )
+
         is FabExtended -> GoogleSignButtonExtendedFab(
             modifier = modifier,
             fabExtendedButtonProperties = buttonType.fabExtendedButtonProperties,

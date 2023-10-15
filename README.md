@@ -34,7 +34,7 @@ In the future I will be adding more features, if you have any suggestion let me 
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-		GoogleSignInFullButton(
+	GoogleSignInFullButton(
             tokenClientId = stringResource(id = R.string.default_web_client_id),// Your token client id
             onClick = {
                 Toast.makeText(context, "Result: ${it.result}, token: ${it.idToken}", Toast.LENGTH_SHORT).show()

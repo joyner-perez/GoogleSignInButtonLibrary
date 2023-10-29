@@ -619,8 +619,10 @@ style:
     active: true
   OptionalUnit:
     active: false
-  OptionalWhenBraces:
-    active: false
+  BracesOnWhenStatements:
+    active: true
+    singleLine: 'necessary'
+    multiLine: 'necessary'
   PreferToOverPairSyntax:
     active: false
   ProtectedMemberInFinalClass:

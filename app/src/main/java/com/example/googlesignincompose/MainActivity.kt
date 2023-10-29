@@ -33,7 +33,6 @@ import com.joyner.googlesignincomposelibrary.models.types.LargeFab
 import com.joyner.googlesignincomposelibrary.models.types.Outlined
 import com.joyner.googlesignincomposelibrary.models.types.SmallFab
 import com.joyner.googlesignincomposelibrary.models.types.Text
-import com.joyner.googlesignincomposelibrary.ui.GoogleSignButton
 import com.joyner.googlesignincomposelibrary.ui.GoogleSignInButton
 import com.joyner.googlesignincomposelibrary.ui.GoogleSignInFullButton
 

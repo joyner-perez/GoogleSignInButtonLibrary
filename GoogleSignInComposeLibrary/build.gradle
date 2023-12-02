@@ -1,17 +1,17 @@
 plugins {
-    id 'com.android.library'
-    id 'org.jetbrains.kotlin.android'
-    id 'com.github.ben-manes.versions'
-    id 'io.gitlab.arturbosch.detekt'
+    alias libs.plugins.android.library
+    alias libs.plugins.kotlin.android
+    alias libs.plugins.ben.manes.versions
+    alias libs.plugins.detekt
 }
 
 android {
     namespace "com.joyner.googlesignincomposelibrary"
-    compileSdk 34
+    compileSdk libs.versions.compileSdk.get() as Integer
 
     defaultConfig {
-        minSdk 24
-        targetSdk 34
+        minSdk libs.versions.minSdk.get() as Integer
+        targetSdk libs.versions.compileSdk.get() as Integer
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -31,22 +31,22 @@ android {
         compose true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion '1.5.2'
+        kotlinCompilerExtensionVersion libs.versions.kotlinCompilerExtension.get() as String
     }
 }
 
 dependencies {
-    implementation "androidx.activity:activity-compose:1.8.0"
-    implementation "androidx.compose.material3:material3"
-    implementation "androidx.compose.ui:ui"
-    implementation "androidx.compose.ui:ui-tooling-preview"
-    implementation "androidx.core:core-ktx:1.12.0"
-    implementation "com.google.android.gms:play-services-auth:20.7.0"
-    implementation platform ("androidx.compose:compose-bom:2023.10.01")
-    testImplementation "junit:junit:4.13.2"
-    androidTestImplementation "androidx.compose.ui:ui-test-junit4"
-    androidTestImplementation "androidx.test.ext:junit:1.1.5"
-    androidTestImplementation "androidx.test.espresso:espresso-core:3.5.1"
-    debugImplementation "androidx.compose.ui:ui-test-manifest"
-    debugImplementation "androidx.compose.ui:ui-tooling"
+    implementation libs.activity.compose
+    implementation libs.material3
+    implementation libs.ui.compose
+    implementation libs.ui.tooling.preview
+    implementation libs.core.ktx
+    implementation libs.play.services.auth
+    implementation platform (libs.compose.bom)
+    testImplementation libs.junit
+    androidTestImplementation libs.ui.test.junit4
+    androidTestImplementation libs.ext.junit
+    androidTestImplementation libs.espresso.core
+    debugImplementation libs.ui.test.manifest
+    debugImplementation libs.ui.tooling.compose
 }

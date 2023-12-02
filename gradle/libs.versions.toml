@@ -1,0 +1,47 @@
+[versions]
+# Configuration for the build system
+compileSdk = "34"
+minSdk = "24"
+kotlinCompilerExtension = "1.5.3"
+
+# Dependencies
+activityCompose = "1.8.1"
+androidGradlePlugin = "8.2.0"
+benManes = "0.50.0"
+composeBom = "2023.10.01"
+coreKtx = "1.12.0"
+detekt = "1.23.4"
+espressoCore = "3.5.1"
+extJunit = "1.1.5"
+googlePlayServices = "4.4.0"
+jUnit = "4.13.2"
+kotlin = "1.9.10"
+kotlinBom = "1.9.21"
+lifecycleRuntimeKtx = "2.6.2"
+playServicesAuth = "20.7.0"
+
+[libraries]
+activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
+compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
+core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "extJunit" }
+espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+junit = { group = "junit", name = "junit", version.ref = "jUnit" }
+kotlin-bom = { group = "org.jetbrains.kotlin", name = "kotlin-bom", version.ref = "kotlinBom" }
+lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
+material3 = { group = "androidx.compose.material3", name = "material3" }
+play-services-auth = { group = "com.google.android.gms", name = "play-services-auth", version.ref = "playServicesAuth" }
+ui-compose = { group = "androidx.compose.ui", name = "ui" }
+ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
+ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
+ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+ui-tooling-compose = { group = "androidx.compose.ui", name = "ui-tooling" }
+ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
+android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
+ben-manes-versions = { id = "com.github.ben-manes.versions", version.ref = "benManes" }
+detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
+google-services = { id = "com.google.gms.google-services", version.ref = "googlePlayServices" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }

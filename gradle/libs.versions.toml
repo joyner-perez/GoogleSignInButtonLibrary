@@ -2,10 +2,10 @@
 # Configuration for the build system
 compileSdk = "34"
 minSdk = "24"
-kotlinCompilerExtension = "1.5.3"
+kotlinCompilerExtension = "1.5.4"
 
 # Dependencies
-activityCompose = "1.8.1"
+activityCompose = "1.8.2"
 androidGradlePlugin = "8.2.0"
 benManes = "0.50.0"
 composeBom = "2023.10.01"
@@ -15,8 +15,8 @@ espressoCore = "3.5.1"
 extJunit = "1.1.5"
 googlePlayServices = "4.4.0"
 jUnit = "4.13.2"
-kotlin = "1.9.10"
-kotlinBom = "1.9.21"
+kotlin = "1.9.20"
+kotlinBom = "1.9.22"
 lifecycleRuntimeKtx = "2.6.2"
 playServicesAuth = "20.7.0"
 

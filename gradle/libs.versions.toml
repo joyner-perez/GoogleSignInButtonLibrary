@@ -2,7 +2,7 @@
 # Configuration for the build system
 compileSdk = "34"
 minSdk = "24"
-kotlinCompilerExtension = "1.5.9"
+kotlinCompilerExtension = "1.5.10"
 
 # Dependencies
 activityCompose = "1.8.2"

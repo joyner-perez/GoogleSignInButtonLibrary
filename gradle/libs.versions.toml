@@ -2,25 +2,24 @@
 # Configuration for the build system
 compileSdk = "35"
 minSdk = "24"
-kotlinCompilerExtension = "1.5.14"
 
 # Dependencies
-activityCompose = "1.9.1"
-androidGradlePlugin = "8.5.2"
+activityCompose = "1.9.3"
+androidGradlePlugin = "8.7.2"
 benManes = "0.51.0"
-composeBom = "2024.06.00"
-coreKtx = "1.13.1"
-credentials = "1.5.0-alpha04"
-detekt = "1.23.6"
+composeBom = "2024.11.00"
+coreKtx = "1.15.0"
+credentials = "1.5.0-beta01"
+detekt = "1.23.7"
 espressoCore = "3.6.1"
 extJunit = "1.2.1"
 googleId = "1.1.1"
 googlePlayServices = "4.4.2"
 jUnit = "4.13.2"
-kotlin = "1.9.24"
-kotlinBom = "1.9.24"
-ktlint = "12.1.1"
-lifecycleRuntimeKtx = "2.8.4"
+kotlin = "2.1.0"
+kotlinBom = "2.1.0"
+ktlint = "12.1.2"
+lifecycleRuntimeKtx = "2.8.7"
 playServicesAuth = "21.2.0"
 
 [libraries]
@@ -48,6 +47,7 @@ ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
 android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
 ben-manes-versions = { id = "com.github.ben-manes.versions", version.ref = "benManes" }
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 google-services = { id = "com.google.gms.google-services", version.ref = "googlePlayServices" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }

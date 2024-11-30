@@ -1,31 +1,36 @@
 [versions]
 # Configuration for the build system
-compileSdk = "34"
+compileSdk = "35"
 minSdk = "24"
-kotlinCompilerExtension = "1.5.10"
 
 # Dependencies
-activityCompose = "1.8.2"
-androidGradlePlugin = "8.2.2"
+activityCompose = "1.9.3"
+androidGradlePlugin = "8.7.2"
 benManes = "0.51.0"
-composeBom = "2024.02.00"
-coreKtx = "1.12.0"
-detekt = "1.23.5"
-espressoCore = "3.5.1"
-extJunit = "1.1.5"
-googlePlayServices = "4.4.1"
+composeBom = "2024.11.00"
+coreKtx = "1.15.0"
+credentials = "1.5.0-beta01"
+detekt = "1.23.7"
+espressoCore = "3.6.1"
+extJunit = "1.2.1"
+googleId = "1.1.1"
+googlePlayServices = "4.4.2"
 jUnit = "4.13.2"
-kotlin = "1.9.22"
-kotlinBom = "1.9.22"
-lifecycleRuntimeKtx = "2.7.0"
-playServicesAuth = "21.0.0"
+kotlin = "2.1.0"
+kotlinBom = "2.1.0"
+ktlint = "12.1.2"
+lifecycleRuntimeKtx = "2.8.7"
+playServicesAuth = "21.2.0"
 
 [libraries]
 activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
 compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+credentials = { group = "androidx.credentials", name = "credentials", version.ref = "credentials" }
+credentials-play-services = { group = "androidx.credentials", name = "credentials-play-services-auth", version.ref = "credentials" }
 ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "extJunit" }
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+google-id = { group = "com.google.android.libraries.identity.googleid", name = "googleid", version.ref = "googleId" }
 junit = { group = "junit", name = "junit", version.ref = "jUnit" }
 kotlin-bom = { group = "org.jetbrains.kotlin", name = "kotlin-bom", version.ref = "kotlinBom" }
 lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
@@ -42,6 +47,8 @@ ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
 android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
 ben-manes-versions = { id = "com.github.ben-manes.versions", version.ref = "benManes" }
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 google-services = { id = "com.google.gms.google-services", version.ref = "googlePlayServices" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint" }

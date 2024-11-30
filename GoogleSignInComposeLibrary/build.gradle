@@ -1,8 +1,11 @@
 plugins {
     alias libs.plugins.android.library
-    alias libs.plugins.kotlin.android
     alias libs.plugins.ben.manes.versions
+    alias libs.plugins.compose.compiler
     alias libs.plugins.detekt
+    alias libs.plugins.kotlin.android
+    alias libs.plugins.ktlint
+    id("maven-publish")
 }
 
 android {
@@ -30,8 +33,28 @@ android {
     buildFeatures {
         compose true
     }
-    composeOptions {
-        kotlinCompilerExtensionVersion libs.versions.kotlinCompilerExtension.get() as String
+    composeCompiler {
+        enableStrongSkippingMode = true
+    }
+}
+
+publishing {
+    publications {
+        release(MavenPublication) {
+            groupId = 'com.github.joyner-perez'
+            artifactId = 'GoogleSignInButtonLibrary'
+            version = 'v3.0.0'
+
+            afterEvaluate {
+                from components.release
+            }
+        }
+    }
+    repositories {
+        maven {
+            name = 'local'
+            url = layout.buildDirectory.dir("repo")
+        }
     }
 }
 
@@ -42,6 +65,9 @@ dependencies {
     implementation libs.ui.tooling.preview
     implementation libs.core.ktx
     implementation libs.play.services.auth
+    implementation libs.credentials
+    implementation libs.credentials.play.services
+    implementation libs.google.id
     implementation platform (libs.compose.bom)
     testImplementation libs.junit
     androidTestImplementation libs.ui.test.junit4

@@ -56,8 +56,8 @@ import kotlinx.coroutines.launch
  */
 @Composable
 fun GoogleSignInFullButton(
-    modifier: Modifier = Modifier,
     buttonType: ButtonType = Elevated(),
+    modifier: Modifier = Modifier,
     enabled: Boolean = true,
     showIcon: Boolean = true,
     tokenClientId: String,

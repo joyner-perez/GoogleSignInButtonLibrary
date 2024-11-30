@@ -75,4 +75,5 @@ dependencies {
     androidTestImplementation libs.espresso.core
     debugImplementation libs.ui.test.manifest
     debugImplementation libs.ui.tooling.compose
+    detektPlugins libs.detekt.formatting
 }

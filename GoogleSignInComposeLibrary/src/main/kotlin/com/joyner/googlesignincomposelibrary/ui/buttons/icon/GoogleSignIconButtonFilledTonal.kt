@@ -34,12 +34,9 @@ internal fun GoogleSignIconButtonFilledTonal(
     )
 }
 
-@Preview(
-    showBackground = true,
-    showSystemUi = true
-)
+@Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun GoogleSignIconButtonFilledTonalPreview() {
+private fun GoogleSignIconButtonFilledTonalPreview() {
     GoogleSignIconButtonFilledTonal(
         onClick = {}
     )

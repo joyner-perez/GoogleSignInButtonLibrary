@@ -56,8 +56,8 @@ import kotlinx.coroutines.launch
  */
 @Composable
 fun GoogleSignInFullButton(
-    buttonType: ButtonType = Elevated(),
     modifier: Modifier = Modifier,
+    buttonType: ButtonType = Elevated(),
     enabled: Boolean = true,
     showIcon: Boolean = true,
     tokenClientId: String,
@@ -190,13 +190,9 @@ private fun makeLogin(
     }
 }
 
-@Preview(
-    showBackground = true,
-    showSystemUi = true,
-    backgroundColor = 0xFF002022
-)
+@Preview(showBackground = true, showSystemUi = true, backgroundColor = 0xFF002022)
 @Composable
-fun GoogleSignInFullButtonPreview() {
+private fun GoogleSignInFullButtonPreview() {
     GoogleSignInFullButton(
         tokenClientId = "",
         onClick = {}

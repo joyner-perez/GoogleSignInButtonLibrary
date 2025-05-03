@@ -72,13 +72,9 @@ fun GoogleSignInButton(
     }
 }
 
-@Preview(
-    showBackground = true,
-    showSystemUi = true,
-    backgroundColor = 0xFF002022
-)
+@Preview(showBackground = true, showSystemUi = true, backgroundColor = 0xFF002022)
 @Composable
-fun GoogleSignInButtonPreview() {
+private fun GoogleSignInButtonPreview() {
     GoogleSignInButton(
         onClick = {}
     )

@@ -56,12 +56,9 @@ internal fun GoogleSignButtonFilled(
     )
 }
 
-@Preview(
-    showBackground = true,
-    showSystemUi = true
-)
+@Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun GoogleSignButtonFilledPreview() {
+private fun GoogleSignButtonFilledPreview() {
     GoogleSignButtonFilled(
         onClick = {}
     )

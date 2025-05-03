@@ -56,12 +56,9 @@ internal fun GoogleSignButtonOutlined(
     )
 }
 
-@Preview(
-    showBackground = true,
-    showSystemUi = true
-)
+@Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun GoogleSignButtonOutlinedPreview() {
+private fun GoogleSignButtonOutlinedPreview() {
     GoogleSignButtonOutlined(
         onClick = {}
     )

@@ -1,6 +1,10 @@
 package com.joyner.googlesignincomposelibrary.ui.buttons.fab
 
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.joyner.googlesignincomposelibrary.models.types.ButtonType
@@ -46,13 +50,31 @@ internal fun MainFabGoogleSignButton(
     }
 }
 
-@Preview(
-    showBackground = true,
-    showSystemUi = true
-)
+@Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun MainFabGoogleSignButtonPreview() {
-    MainFabGoogleSignButton(
-        onClick = {}
-    )
+private fun MainFabGoogleSignButtonPreview() {
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        MainFabGoogleSignButton(
+            onClick = {}
+        )
+
+        MainFabGoogleSignButton(
+            buttonType = SmallFab(),
+            onClick = {}
+        )
+
+        MainFabGoogleSignButton(
+            buttonType = LargeFab(),
+            onClick = {}
+        )
+
+        MainFabGoogleSignButton(
+            buttonType = FabExtended(),
+            onClick = {}
+        )
+    }
 }

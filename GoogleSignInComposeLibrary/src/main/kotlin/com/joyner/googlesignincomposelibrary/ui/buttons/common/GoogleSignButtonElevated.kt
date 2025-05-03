@@ -60,12 +60,9 @@ internal fun GoogleSignButtonElevated(
     )
 }
 
-@Preview(
-    showBackground = true,
-    showSystemUi = true
-)
+@Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun GoogleSignButtonElevatedPreview() {
+private fun GoogleSignButtonElevatedPreview() {
     GoogleSignButtonElevated(
         onClick = {}
     )

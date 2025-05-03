@@ -32,12 +32,9 @@ internal fun GoogleSignButtonFab(
     )
 }
 
-@Preview(
-    showBackground = true,
-    showSystemUi = true
-)
+@Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun GoogleSignButtonFabPreview() {
+private fun GoogleSignButtonFabPreview() {
     GoogleSignButtonFab(
         onClick = {}
     )

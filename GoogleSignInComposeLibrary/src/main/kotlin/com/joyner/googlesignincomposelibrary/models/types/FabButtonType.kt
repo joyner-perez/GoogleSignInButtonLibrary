@@ -5,17 +5,14 @@ import com.joyner.googlesignincomposelibrary.models.properties.FabExtendedButton
 
 sealed class FabButtonType : ButtonType()
 
-data class Fab(
-    val fabButtonProperties: FabButtonProperties = FabButtonProperties()
-) : FabButtonType()
+data class Fab(val fabButtonProperties: FabButtonProperties = FabButtonProperties()) :
+    FabButtonType()
 
-data class SmallFab(
-    val fabButtonProperties: FabButtonProperties = FabButtonProperties()
-) : FabButtonType()
+data class SmallFab(val fabButtonProperties: FabButtonProperties = FabButtonProperties()) :
+    FabButtonType()
 
-data class LargeFab(
-    val fabButtonProperties: FabButtonProperties = FabButtonProperties()
-) : FabButtonType()
+data class LargeFab(val fabButtonProperties: FabButtonProperties = FabButtonProperties()) :
+    FabButtonType()
 
 data class FabExtended(
     val fabExtendedButtonProperties: FabExtendedButtonProperties = FabExtendedButtonProperties()

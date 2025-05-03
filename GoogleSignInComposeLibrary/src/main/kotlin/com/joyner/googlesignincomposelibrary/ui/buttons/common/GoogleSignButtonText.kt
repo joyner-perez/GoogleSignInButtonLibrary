@@ -60,11 +60,8 @@ internal fun GoogleSignButtonText(
     )
 }
 
-@Preview(
-    showBackground = true,
-    showSystemUi = true
-)
+@Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun GoogleSignButtonTextPreview() {
+private fun GoogleSignButtonTextPreview() {
     GoogleSignButtonText(onClick = {})
 }

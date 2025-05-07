@@ -13,10 +13,10 @@ import com.joyner.googlesignincomposelibrary.models.properties.IconButtonPropert
 
 @Composable
 internal fun GoogleSignIconButtonStandard(
+    onClick: () -> Unit,
     modifier: Modifier = Modifier,
     iconButtonProperties: IconButtonProperties = IconButtonProperties(),
-    enabled: Boolean = true,
-    onClick: () -> Unit
+    enabled: Boolean = true
 ) {
     IconButton(
         modifier = modifier

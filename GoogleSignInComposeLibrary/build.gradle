@@ -85,4 +85,7 @@ dependencies {
     debugImplementation libs.ui.test.manifest
     debugImplementation libs.ui.tooling.compose
     detektPlugins libs.detekt.formatting
+    detektPlugins libs.detekt.rules.libraries
+    detektPlugins libs.detekt.rules.compose
+    detektPlugins libs.detekt.rules.ruleauthors
 }

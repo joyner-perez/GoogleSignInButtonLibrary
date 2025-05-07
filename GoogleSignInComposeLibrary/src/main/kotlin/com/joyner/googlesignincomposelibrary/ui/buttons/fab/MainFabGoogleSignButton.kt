@@ -15,10 +15,10 @@ import com.joyner.googlesignincomposelibrary.models.types.SmallFab
 
 @Composable
 internal fun MainFabGoogleSignButton(
+    onClick: () -> Unit,
     modifier: Modifier = Modifier,
     buttonType: ButtonType = Fab(),
-    showIcon: Boolean = true,
-    onClick: () -> Unit
+    showIcon: Boolean = true
 ) {
     when (buttonType) {
         is Fab -> GoogleSignButtonFab(

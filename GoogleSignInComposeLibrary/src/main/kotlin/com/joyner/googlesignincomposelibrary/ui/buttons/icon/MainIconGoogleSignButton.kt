@@ -15,10 +15,10 @@ import com.joyner.googlesignincomposelibrary.models.types.IconStandard
 
 @Composable
 internal fun MainIconGoogleSignButton(
+    onClick: () -> Unit,
     modifier: Modifier = Modifier,
     buttonType: ButtonType = IconStandard(),
-    enabled: Boolean = true,
-    onClick: () -> Unit
+    enabled: Boolean = true
 ) {
     when (buttonType) {
         is IconFilled -> GoogleSignIconButtonFilled(

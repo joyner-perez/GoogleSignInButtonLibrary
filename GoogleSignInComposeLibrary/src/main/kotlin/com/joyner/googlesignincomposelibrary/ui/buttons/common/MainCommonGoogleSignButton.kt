@@ -16,11 +16,11 @@ import com.joyner.googlesignincomposelibrary.models.types.Text
 
 @Composable
 internal fun MainCommonGoogleSignButton(
+    onClick: () -> Unit,
     modifier: Modifier = Modifier,
     buttonType: ButtonType = Elevated(),
     enabled: Boolean = true,
-    showIcon: Boolean = true,
-    onClick: () -> Unit
+    showIcon: Boolean = true
 ) {
     when (buttonType) {
         is Elevated ->

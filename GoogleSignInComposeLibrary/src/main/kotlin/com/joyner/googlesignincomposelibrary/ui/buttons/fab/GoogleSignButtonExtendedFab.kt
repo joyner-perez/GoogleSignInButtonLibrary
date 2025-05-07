@@ -20,10 +20,10 @@ import com.joyner.googlesignincomposelibrary.models.properties.FabExtendedButton
 
 @Composable
 internal fun GoogleSignButtonExtendedFab(
+    onClick: () -> Unit,
     modifier: Modifier = Modifier,
     fabExtendedButtonProperties: FabExtendedButtonProperties = FabExtendedButtonProperties(),
-    showIcon: Boolean = true,
-    onClick: () -> Unit
+    showIcon: Boolean = true
 ) {
     ExtendedFloatingActionButton(
         modifier = modifier,

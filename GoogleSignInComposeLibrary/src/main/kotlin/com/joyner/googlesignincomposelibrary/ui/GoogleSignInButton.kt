@@ -38,11 +38,11 @@ import com.joyner.googlesignincomposelibrary.ui.buttons.icon.MainIconGoogleSignB
  */
 @Composable
 fun GoogleSignInButton(
+    onClick: () -> Unit,
     modifier: Modifier = Modifier,
     buttonType: ButtonType = Elevated(),
     enabled: Boolean = true,
-    showIcon: Boolean = true,
-    onClick: () -> Unit
+    showIcon: Boolean = true
 ) {
     when (buttonType) {
         is Elevated, is Filled, is FilledTonal, is Outlined, is Text ->

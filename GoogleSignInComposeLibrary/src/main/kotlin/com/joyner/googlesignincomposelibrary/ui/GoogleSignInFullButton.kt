@@ -56,12 +56,12 @@ import kotlinx.coroutines.launch
  */
 @Composable
 fun GoogleSignInFullButton(
+    tokenClientId: String,
+    onClick: (fullIntegrationResult: FullIntegrationResult) -> Unit,
     modifier: Modifier = Modifier,
     buttonType: ButtonType = Elevated(),
     enabled: Boolean = true,
-    showIcon: Boolean = true,
-    tokenClientId: String,
-    onClick: (fullIntegrationResult: FullIntegrationResult) -> Unit
+    showIcon: Boolean = true
 ) {
     val context = LocalContext.current
     val coroutineScope = rememberCoroutineScope()

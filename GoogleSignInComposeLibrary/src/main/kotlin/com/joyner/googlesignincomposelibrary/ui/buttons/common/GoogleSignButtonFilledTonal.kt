@@ -20,11 +20,11 @@ import com.joyner.googlesignincomposelibrary.models.properties.CommonButtonPrope
 
 @Composable
 internal fun GoogleSignButtonFilledTonal(
+    onClick: () -> Unit,
     modifier: Modifier = Modifier,
     commonButtonProperties: CommonButtonProperties = CommonButtonProperties(),
     enabled: Boolean = true,
-    showIcon: Boolean = true,
-    onClick: () -> Unit
+    showIcon: Boolean = true
 ) {
     FilledTonalButton(
         modifier = modifier

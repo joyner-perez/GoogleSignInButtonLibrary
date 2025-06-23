@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -38,7 +37,7 @@ internal fun GoogleSignButtonExtendedFab(
                             modifier = Modifier
                                 .padding(end = 16.dp)
                                 .size(24.dp),
-                            tint = MaterialTheme.colorScheme.primary,
+                            tint = fabExtendedButtonProperties.googleIconColor,
                             painter = painterResource(id = fabExtendedButtonProperties.googleIcon),
                             contentDescription = "LogoGoogle"
                         )
@@ -46,7 +45,7 @@ internal fun GoogleSignButtonExtendedFab(
                     Text(
                         text = stringResource(id = fabExtendedButtonProperties.googleButtonText),
                         fontSize = fabExtendedButtonProperties.googleButtonTextSize.sp,
-                        color = MaterialTheme.colorScheme.primary
+                        color = fabExtendedButtonProperties.textButtonColor
                     )
                 }
             )

@@ -48,7 +48,8 @@ internal fun GoogleSignButtonFilledTonal(
                     }
                     Text(
                         text = stringResource(id = commonButtonProperties.googleButtonText),
-                        fontSize = commonButtonProperties.googleButtonTextSize.sp
+                        fontSize = commonButtonProperties.googleButtonTextSize.sp,
+                        color = commonButtonProperties.textButtonColor
                     )
                 }
             )

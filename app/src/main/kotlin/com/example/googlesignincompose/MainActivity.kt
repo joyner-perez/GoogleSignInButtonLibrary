@@ -108,6 +108,13 @@ fun GoogleSign() {
 
         GoogleSignInButton(
             buttonType = Text(),
+            onClick = {
+                Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show()
+            }
+        )
+
+        GoogleSignInButton(
+            buttonType = Text(),
             showIcon = false,
             onClick = {
                 Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show()

@@ -3,6 +3,7 @@ plugins {
     alias libs.plugins.ben.manes.versions
     alias libs.plugins.compose.compiler
     alias libs.plugins.detekt
+    alias libs.plugins.dokka
     alias libs.plugins.kotlin.android
     alias libs.plugins.ktlint
     id("maven-publish")
@@ -52,7 +53,7 @@ publishing {
         release(MavenPublication) {
             groupId = 'com.github.joyner-perez'
             artifactId = 'GoogleSignInButtonLibrary'
-            version = 'v3.0.3'
+            version = 'v3.0.5'
 
             afterEvaluate {
                 from components.release
@@ -64,6 +65,12 @@ publishing {
             name = 'local'
             url = layout.buildDirectory.dir("repo")
         }
+    }
+}
+
+dokka {
+    dokkaPublications.html {
+        outputDirectory.set(layout.buildDirectory.dir("dokkaDir"))
     }
 }
 
@@ -88,6 +95,7 @@ dependencies {
     detektPlugins libs.detekt.rules.libraries
     detektPlugins libs.detekt.rules.compose
     detektPlugins libs.detekt.rules.ruleauthors
+    dokkaPlugin libs.dokka.android
 }
 
 def isNonStable = { String version ->

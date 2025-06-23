@@ -1,25 +1,26 @@
 [versions]
 # Configuration for the build system
-compileSdk = "35"
+compileSdk = "36"
 minSdk = "24"
 
 # Dependencies
 activityCompose = "1.10.1"
-androidGradlePlugin = "8.10.0"
+androidGradlePlugin = "8.10.1"
 benManes = "0.52.0"
-composeBom = "2025.04.01"
+composeBom = "2025.06.01"
 coreKtx = "1.16.0"
 credentials = "1.5.0"
 detekt = "1.23.8"
 detekt-compose-rules = "0.4.22"
+dokka = "2.0.0"
 espressoCore = "3.6.1"
 extJunit = "1.2.1"
 googleId = "1.1.1"
 googlePlayServices = "4.4.2"
 jUnit = "4.13.2"
-kotlin = "2.1.20"
+kotlin = "2.1.21"
 ktlint = "12.1.2"
-lifecycleRuntimeKtx = "2.8.7"
+lifecycleRuntimeKtx = "2.9.1"
 playServicesAuth = "21.3.0"
 
 [libraries]
@@ -32,6 +33,7 @@ detekt-formatting = { group = "io.gitlab.arturbosch.detekt", name = "detekt-form
 detekt-rules-libraries = { group = "io.gitlab.arturbosch.detekt", name = "detekt-rules-libraries", version.ref = "detekt" }
 detekt-rules-ruleauthors = { group = "io.gitlab.arturbosch.detekt", name = "detekt-rules-ruleauthors", version.ref = "detekt" }
 detekt-rules-compose = { group = "io.nlopez.compose.rules", name = "detekt", version.ref = "detekt-compose-rules" }
+dokka-android = { group = "org.jetbrains.dokka", name = "android-documentation-plugin", version.ref = "dokka" }
 ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "extJunit" }
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 google-id = { group = "com.google.android.libraries.identity.googleid", name = "googleid", version.ref = "googleId" }
@@ -53,6 +55,7 @@ android-library = { id = "com.android.library", version.ref = "androidGradlePlug
 ben-manes-versions = { id = "com.github.ben-manes.versions", version.ref = "benManes" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
+dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
 google-services = { id = "com.google.gms.google-services", version.ref = "googlePlayServices" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint" }

@@ -5,6 +5,7 @@ import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.WindowInsets
@@ -23,7 +24,9 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.googlesignincompose.ui.theme.GoogleSignInButtonLibraryTheme
+import com.example.googlesignincompose.ui.theme.DarkColorScheme
+import com.example.googlesignincompose.ui.theme.LightColorScheme
+import com.example.googlesignincompose.ui.theme.Typography
 import com.joyner.googlesignincomposelibrary.models.types.Elevated
 import com.joyner.googlesignincomposelibrary.models.types.Fab
 import com.joyner.googlesignincomposelibrary.models.types.FabExtended
@@ -48,7 +51,6 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             GoogleSignInButtonLibraryTheme {
-                // A surface container using the 'background' color from the theme
                 Scaffold(
                     contentWindowInsets = WindowInsets.safeContent
                 ) { innerPadding ->
@@ -65,7 +67,25 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun GoogleSign() {
+private fun GoogleSignInButtonLibraryTheme(
+    useDarkTheme: Boolean = isSystemInDarkTheme(),
+    content: @Composable () -> Unit
+) {
+    val colors = if (useDarkTheme) {
+        DarkColorScheme
+    } else {
+        LightColorScheme
+    }
+
+    MaterialTheme(
+        colorScheme = colors,
+        typography = Typography,
+        content = content
+    )
+}
+
+@Composable
+private fun GoogleSign() {
     val context = LocalContext.current
     Column(
         modifier = Modifier.verticalScroll(rememberScrollState()),
@@ -195,7 +215,7 @@ fun GoogleSign() {
         )
 
         GoogleSignInFullButton(
-            tokenClientId = stringResource(id = R.string.default_web_client_id), // Your token client id
+            tokenClientId = stringResource(id = R.string.default_web_client_id),
             onClick = {
                 Toast.makeText(
                     context,

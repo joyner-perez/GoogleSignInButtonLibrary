@@ -3,11 +3,12 @@ plugins {
     alias libs.plugins.compose.compiler
     alias libs.plugins.kotlin.android
     alias libs.plugins.google.services
+    alias libs.plugins.sort.dependencies
 }
 
 android {
     namespace "com.example.googlesignincompose"
-    compileSdk libs.versions.compileSdk.get() as Integer
+    compileSdk = libs.versions.compileSdk.get() as Integer
 
     defaultConfig {
         applicationId "com.example.googlesignincompose"
@@ -51,21 +52,24 @@ android {
 }
 
 dependencies {
-    implementation project (":GoogleSignInComposeLibrary")
-    implementation libs.core.ktx
-    implementation platform (libs.kotlin.bom)
-    implementation libs.lifecycle.runtime.ktx
+    implementation platform(libs.compose.bom)
+    implementation platform(libs.kotlin.bom)
+    implementation project(":GoogleSignInComposeLibrary")
     implementation libs.activity.compose
-    implementation platform (libs.compose.bom)
+    implementation libs.core.ktx
+    implementation libs.lifecycle.runtime.ktx
+    implementation libs.material3
     implementation libs.ui.compose
     implementation libs.ui.graphics
     implementation libs.ui.tooling.preview
-    implementation libs.material3
-    testImplementation libs.junit
-    androidTestImplementation libs.ext.junit
-    androidTestImplementation libs.espresso.core
-    androidTestImplementation platform (libs.compose.bom)
-    androidTestImplementation libs.ui.test.junit4
-    debugImplementation libs.ui.tooling.compose
+
     debugImplementation libs.ui.test.manifest
+    debugImplementation libs.ui.tooling.compose
+
+    testImplementation libs.junit
+
+    androidTestImplementation platform(libs.compose.bom)
+    androidTestImplementation libs.espresso.core
+    androidTestImplementation libs.ext.junit
+    androidTestImplementation libs.ui.test.junit4
 }

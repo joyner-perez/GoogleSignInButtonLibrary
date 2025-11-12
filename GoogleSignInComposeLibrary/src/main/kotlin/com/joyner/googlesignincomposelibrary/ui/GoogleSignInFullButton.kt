@@ -146,11 +146,11 @@ private fun makeLogin(
                 .addCredentialOption(googleIdOption)
                 .build()
         }.fold(
-            onSuccess = {
+            onSuccess = { credentialRequest ->
                 coroutineScope.launch {
                     runCatching {
                         val result = credentialManager.getCredential(
-                            request = it,
+                            request = credentialRequest,
                             context = context
                         )
                         val credential = result.credential

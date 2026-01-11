@@ -26,31 +26,31 @@ internal fun GoogleSignButtonExtendedFab(
 ) {
     ExtendedFloatingActionButton(
         modifier = modifier,
-        onClick = { onClick() },
-        content = {
-            Row(
-                horizontalArrangement = Arrangement.Center,
-                verticalAlignment = Alignment.CenterVertically,
-                content = {
-                    if (showIcon) {
-                        Icon(
-                            modifier = Modifier
-                                .padding(end = 16.dp)
-                                .size(24.dp),
-                            tint = fabExtendedButtonProperties.googleIconColor,
-                            painter = painterResource(id = fabExtendedButtonProperties.googleIcon),
-                            contentDescription = "LogoGoogle"
-                        )
-                    }
-                    Text(
-                        text = stringResource(id = fabExtendedButtonProperties.googleButtonText),
-                        fontSize = fabExtendedButtonProperties.googleButtonTextSize.sp,
-                        color = fabExtendedButtonProperties.textButtonColor
+        onClick = { onClick() }
+    ) {
+        Row(
+            horizontalArrangement = Arrangement.Center,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            if (showIcon) {
+                Icon(
+                    modifier = Modifier
+                        .padding(end = 16.dp)
+                        .size(size = 24.dp),
+                    tint = fabExtendedButtonProperties.googleIconColor,
+                    painter = painterResource(id = fabExtendedButtonProperties.googleIcon),
+                    contentDescription = stringResource(
+                        id = fabExtendedButtonProperties.googleButtonIconContentDescription
                     )
-                }
+                )
+            }
+            Text(
+                text = stringResource(id = fabExtendedButtonProperties.googleButtonText),
+                fontSize = fabExtendedButtonProperties.googleButtonTextSize.sp,
+                color = fabExtendedButtonProperties.textButtonColor
             )
         }
-    )
+    }
 }
 
 @Preview(showBackground = true, showSystemUi = true)

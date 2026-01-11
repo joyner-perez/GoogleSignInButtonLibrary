@@ -12,6 +12,30 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
+
+import java.nio.file.Files
+import java.nio.file.StandardCopyOption
+
+def targetHook = rootDir.toPath().resolve(".git/hooks/pre-commit")
+def sourceHook = rootDir.toPath().resolve(".scripts/pre-commit")
+
+if (Files.notExists(targetHook)) {
+    println "🔧 Install Git hook pre-commit automatically…"
+
+    Files.copy(
+            sourceHook,
+            targetHook,
+            StandardCopyOption.REPLACE_EXISTING
+    )
+
+    def hookFile = targetHook.toFile()
+    hookFile.setReadable(true, false)
+    hookFile.setWritable(true, false)
+    hookFile.setExecutable(true, false)
+
+    println "✅ Hook installed."
+}
+
 rootProject.name = "GoogleSignInButtonLibrary"
 include ':app'
 include ':GoogleSignInComposeLibrary'

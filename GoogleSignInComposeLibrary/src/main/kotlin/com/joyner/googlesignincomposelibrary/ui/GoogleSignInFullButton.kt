@@ -108,7 +108,7 @@ private fun createGoogleIdOption(tokenClientId: String): GetGoogleIdOption? = ru
     val bytes = randomNonce.toByteArray()
     val md = MessageDigest.getInstance("SHA-256")
     val digest = md.digest(bytes)
-    val hashNonce = digest.fold("") { str, args -> str + "%02x".format(args) }
+    val hashNonce = digest.fold(initial = "") { str, args -> str + "%02x".format(args) }
 
     GetGoogleIdOption.Builder()
         .setFilterByAuthorizedAccounts(false)
@@ -117,15 +117,11 @@ private fun createGoogleIdOption(tokenClientId: String): GetGoogleIdOption? = ru
         .setNonce(hashNonce)
         .build()
 }.fold(
-    onSuccess = {
-        it
-    },
-    onFailure = {
-        null
-    }
+    onSuccess = { it },
+    onFailure = { null }
 )
 
-private fun makeLogin(
+fun makeLogin(
     context: Context,
     coroutineScope: CoroutineScope,
     tokenClientId: String,
@@ -143,7 +139,7 @@ private fun makeLogin(
     } else {
         runCatching {
             GetCredentialRequest.Builder()
-                .addCredentialOption(googleIdOption)
+                .addCredentialOption(credentialOption = googleIdOption)
                 .build()
         }.fold(
             onSuccess = { credentialRequest ->

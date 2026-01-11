@@ -14,9 +14,26 @@ plugins {
 subprojects {
     apply plugin: "org.jlleitschuh.gradle.ktlint"
     ktlint {
+        version = libs.versions.ktlintVersion.get() as String
+        debug = true
+        verbose = true
         android = true
+        outputToConsole = true
+        outputColorName = "RED"
         filter {
             exclude("**/com/example/googlesignincompose/app/**")
         }
+    }
+}
+
+tasks.register('installGitHooks', Copy) {
+    description = 'Copies the git hooks from /git-hooks to the .git folder.'
+    group = 'git hooks'
+
+    from("$rootDir/.scripts/pre-commit")
+    into("$rootDir/.git/hooks/")
+
+    filePermissions {
+        unix(0774)
     }
 }

@@ -1,3 +1,7 @@
 package com.joyner.googlesignincomposelibrary.models.properties
 
-open class IconButtonProperties : ButtonProperties()
+import com.joyner.googlesignincomposelibrary.R
+
+open class IconButtonProperties(
+    val googleButtonIconContentDescription: Int = R.string.default_icon_google_content_description
+) : ButtonProperties()

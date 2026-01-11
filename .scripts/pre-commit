@@ -1,0 +1,17 @@
+#! /bin/sh
+echo "💅 Run KtLint..."
+./gradlew ktlintCheck
+if [ $? -ne 0 ]; then
+  echo "❌ KtLint detected errors. Abort commit."
+  exit 1
+fi
+
+echo "🔍 Run Detekt..."
+./gradlew detekt
+if [ $? -ne 0 ]; then
+  echo "❌ Detekt detected problems. Abort commit."
+  exit 1
+fi
+
+echo "✅ All checks done. Continue commit."
+exit 0

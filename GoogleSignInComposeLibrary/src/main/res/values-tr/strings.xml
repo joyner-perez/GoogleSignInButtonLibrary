@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="button_login_google">Google ile giriş yap</string>
+    <string name="default_icon_google_content_description">Google simgesi</string>
 </resources>

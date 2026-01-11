@@ -12,15 +12,20 @@ import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeContent
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -42,6 +47,7 @@ import com.joyner.googlesignincomposelibrary.models.types.SmallFab
 import com.joyner.googlesignincomposelibrary.models.types.Text
 import com.joyner.googlesignincomposelibrary.ui.GoogleSignInButton
 import com.joyner.googlesignincomposelibrary.ui.GoogleSignInFullButton
+import com.joyner.googlesignincomposelibrary.ui.makeLogin
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -223,6 +229,35 @@ private fun GoogleSign() {
                     Toast.LENGTH_SHORT
                 ).show()
             }
+        )
+
+        CustomIconButton()
+    }
+}
+
+@Composable
+private fun CustomIconButton() {
+    val context = LocalContext.current
+    val coroutineScope = rememberCoroutineScope()
+    IconButton(
+        onClick = {
+            makeLogin(
+                context = context,
+                coroutineScope = coroutineScope,
+                tokenClientId = ""
+            ) {
+                Toast.makeText(
+                    context,
+                    "Result: ${it.result}, token: ${it.idToken}",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
+    ) {
+        Icon(
+            modifier = Modifier.size(size = 24.dp),
+            painter = painterResource(id = R.drawable.ic_launcher_foreground),
+            contentDescription = null
         )
     }
 }

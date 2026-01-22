@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/bin/sh
 echo "💅 Run KtLint..."
 ./gradlew ktlintCheck
 if [ $? -ne 0 ]; then

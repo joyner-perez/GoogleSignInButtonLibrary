@@ -15,26 +15,35 @@ dependencyResolutionManagement {
 
 import java.nio.file.Files
 import java.nio.file.StandardCopyOption
+import java.nio.file.attribute.PosixFilePermissions
 
-def targetHook = rootDir.toPath().resolve(".git/hooks/pre-commit")
+def hooksDir   = rootDir.toPath().resolve(".git/hooks")
+def targetHook = hooksDir.resolve("pre-commit")
 def sourceHook = rootDir.toPath().resolve(".scripts/pre-commit")
 
-if (Files.notExists(targetHook)) {
-    println "🔧 Install Git hook pre-commit automatically…"
-
-    Files.copy(
-            sourceHook,
-            targetHook,
-            StandardCopyOption.REPLACE_EXISTING
-    )
-
-    def hookFile = targetHook.toFile()
-    hookFile.setReadable(true, false)
-    hookFile.setWritable(true, false)
-    hookFile.setExecutable(true, false)
-
-    println "✅ Hook installed."
+// 1) Asegura que el origen exista
+if (Files.notExists(sourceHook)) {
+    throw new GradleException("❌ No existe el hook fuente: ${sourceHook}. ¿Está en .scripts/pre-commit?")
 }
+
+// 2) Asegura que exista .git/hooks
+Files.createDirectories(hooksDir)
+
+// 3) Copia SIEMPRE (o cuando cambie)
+println "🔧 Installing Git hook pre-commit…"
+Files.copy(sourceHook, targetHook, StandardCopyOption.REPLACE_EXISTING)
+
+// 4) Permisos (en Windows esto puede no aplicar y no pasa nada)
+try {
+    Files.setPosixFilePermissions(
+            targetHook,
+            PosixFilePermissions.fromString("rwxr-xr-x")
+    )
+} catch (Throwable ignored) {
+    // Windows / FS sin POSIX
+}
+
+println "✅ Hook installed at ${targetHook}"
 
 rootProject.name = "GoogleSignInButtonLibrary"
 include ':app'

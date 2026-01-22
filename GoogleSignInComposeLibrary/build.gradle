@@ -1,10 +1,8 @@
 plugins {
     alias libs.plugins.android.library
-    alias libs.plugins.ben.manes.versions
     alias libs.plugins.compose.compiler
     alias libs.plugins.detekt
     alias libs.plugins.dokka
-    alias libs.plugins.kotlin.android
     alias libs.plugins.ktlint
     alias libs.plugins.sort.dependencies
     id("maven-publish")
@@ -54,7 +52,7 @@ publishing {
         release(MavenPublication) {
             groupId = 'com.github.joyner-perez'
             artifactId = 'GoogleSignInButtonLibrary'
-            version = '3.1.0'
+            version = '3.1.1'
 
             afterEvaluate {
                 from components.release
@@ -102,16 +100,4 @@ dependencies {
     detektPlugins libs.detekt.rules.ruleauthors
 
     dokkaPlugin libs.dokka.android
-}
-
-def isNonStable = { String version ->
-    def stableKeyword = ['RELEASE', 'FINAL', 'GA'].any { it -> version.toUpperCase().contains(it) }
-    def regex = /^[0-9,.v-]+(-r)?$/
-    return !stableKeyword && !(version ==~ regex)
-}
-
-tasks.named("dependencyUpdates").configure {
-    rejectVersionIf {
-        isNonStable(it.candidate.version)
-    }
 }

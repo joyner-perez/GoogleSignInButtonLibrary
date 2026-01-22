@@ -1,12 +1,11 @@
 plugins {
     alias libs.plugins.android.application apply false
     alias libs.plugins.android.library apply false
-    alias libs.plugins.ben.manes.versions apply false
+    alias libs.plugins.caupain
     alias libs.plugins.compose.compiler apply false
     alias libs.plugins.detekt apply false
     alias libs.plugins.dokka apply false
     alias libs.plugins.google.services apply false
-    alias libs.plugins.kotlin.android apply false
     alias libs.plugins.ktlint apply false
     alias libs.plugins.sort.dependencies apply false
 }
@@ -23,17 +22,5 @@ subprojects {
         filter {
             exclude("**/com/example/googlesignincompose/app/**")
         }
-    }
-}
-
-tasks.register('installGitHooks', Copy) {
-    description = 'Copies the git hooks from /git-hooks to the .git folder.'
-    group = 'git hooks'
-
-    from("$rootDir/.scripts/pre-commit")
-    into("$rootDir/.git/hooks/")
-
-    filePermissions {
-        unix(0774)
     }
 }

@@ -52,7 +52,7 @@ publishing {
         release(MavenPublication) {
             groupId = 'com.github.joyner-perez'
             artifactId = 'GoogleSignInButtonLibrary'
-            version = '3.1.1'
+            version = '3.1.2'
 
             afterEvaluate {
                 from components.release

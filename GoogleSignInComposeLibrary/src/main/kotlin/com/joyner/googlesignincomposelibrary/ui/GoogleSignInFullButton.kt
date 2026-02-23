@@ -123,7 +123,7 @@ private fun createGoogleIdOption(tokenClientId: String): GetGoogleIdOption? = ru
 )
 
 /**
- * makeLogin.
+ * fun makeLogin.
  *
  * It is the implementation using Google services, you only have to take
  * care of the navigation when you receive the response.

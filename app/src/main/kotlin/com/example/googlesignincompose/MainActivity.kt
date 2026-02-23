@@ -48,6 +48,9 @@ import com.joyner.googlesignincomposelibrary.models.types.Text
 import com.joyner.googlesignincomposelibrary.ui.GoogleSignInButton
 import com.joyner.googlesignincomposelibrary.ui.GoogleSignInFullButton
 import com.joyner.googlesignincomposelibrary.ui.makeLogin
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -222,12 +225,23 @@ private fun GoogleSign() {
 
         GoogleSignInFullButton(
             tokenClientId = stringResource(id = R.string.default_web_client_id),
-            onClick = {
-                Toast.makeText(
-                    context,
-                    "Result: ${it.result}, token: ${it.idToken}",
-                    Toast.LENGTH_SHORT
-                ).show()
+            onClick = { googleSignInResult ->
+                googleSignInResult.fold(
+                    onSuccess = {
+                        Toast.makeText(
+                            context,
+                            "Result: success, token: $it",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    },
+                    onFailure = {
+                        Toast.makeText(
+                            context,
+                            "Result: failure",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                )
             }
         )
 
@@ -241,22 +255,37 @@ private fun CustomIconButton() {
     val coroutineScope = rememberCoroutineScope()
     IconButton(
         onClick = {
-            makeLogin(
-                context = context,
-                coroutineScope = coroutineScope,
-                tokenClientId = ""
-            ) {
-                Toast.makeText(
-                    context,
-                    "Result: ${it.result}, token: ${it.idToken}",
-                    Toast.LENGTH_SHORT
-                ).show()
+            coroutineScope.launch(context = Dispatchers.IO) {
+                val result = makeLogin(
+                    context = context,
+                    tokenClientId = ""
+                )
+                withContext(Dispatchers.Main) {
+                    result.fold(
+                        onSuccess = {
+                            Toast.makeText(
+                                context,
+                                "Result: success, token: $it",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        },
+                        onFailure = {
+                            Toast.makeText(
+                                context,
+                                "Result: failure",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    )
+                }
             }
         }
     ) {
         Icon(
             modifier = Modifier.size(size = 24.dp),
-            painter = painterResource(id = R.drawable.ic_launcher_foreground),
+            painter = painterResource(
+                id = com.joyner.googlesignincomposelibrary.R.drawable.ic_google_button
+            ),
             contentDescription = null
         )
     }

@@ -10,7 +10,6 @@ import androidx.credentials.CredentialManager
 import androidx.credentials.GetCredentialRequest
 import com.google.android.libraries.identity.googleid.GetGoogleIdOption
 import com.google.android.libraries.identity.googleid.GoogleIdTokenCredential
-import com.joyner.googlesignincomposelibrary.models.FullIntegrationResult
 import com.joyner.googlesignincomposelibrary.models.types.ButtonType
 import com.joyner.googlesignincomposelibrary.models.types.Elevated
 import com.joyner.googlesignincomposelibrary.models.types.Fab
@@ -30,8 +29,9 @@ import com.joyner.googlesignincomposelibrary.ui.buttons.fab.MainFabGoogleSignBut
 import com.joyner.googlesignincomposelibrary.ui.buttons.icon.MainIconGoogleSignButton
 import java.security.MessageDigest
 import java.util.UUID
-import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 /**
  * GoogleSignInFullButton.
@@ -47,17 +47,15 @@ import kotlinx.coroutines.launch
  * @param showIcon if you need the icon button to be show or hide.
  * @param tokenClientId your client id after created your project in
  *    Firebase and configure Google Sign in. Is mandatory.
- * @param onClick event to do what you need, you will receive a
- *    FullIntegrationResult object, which has two properties, result, of
- *    type boolean and token, of type string. If the login was correct,
- *    result will be true and token will have a value other than empty. It
- *    is mandatory.
+ * @param onClick event to do what you need, you will receive a Result. If the login was correct,
+ *    result will be success and token will have a value. If the login was not correct, result will
+ *    be failure and token will be null. It is mandatory.
  * @author Joyner
  */
 @Composable
 fun GoogleSignInFullButton(
     tokenClientId: String,
-    onClick: (fullIntegrationResult: FullIntegrationResult) -> Unit,
+    onClick: (Result<String>) -> Unit,
     modifier: Modifier = Modifier,
     buttonType: ButtonType = Elevated(),
     enabled: Boolean = true,
@@ -67,12 +65,15 @@ fun GoogleSignInFullButton(
     val coroutineScope = rememberCoroutineScope()
 
     val onClickButton: () -> Unit = {
-        makeLogin(
-            context = context,
-            coroutineScope = coroutineScope,
-            tokenClientId = tokenClientId,
-            onClick = onClick
-        )
+        coroutineScope.launch(context = Dispatchers.IO) {
+            val result = makeLogin(
+                context = context,
+                tokenClientId = tokenClientId
+            )
+            withContext(Dispatchers.Main) {
+                onClick(result)
+            }
+        }
     }
 
     when (buttonType) {
@@ -121,21 +122,24 @@ private fun createGoogleIdOption(tokenClientId: String): GetGoogleIdOption? = ru
     onFailure = { null }
 )
 
-fun makeLogin(
-    context: Context,
-    coroutineScope: CoroutineScope,
-    tokenClientId: String,
-    onClick: (FullIntegrationResult) -> Unit
-) {
+/**
+ * makeLogin.
+ *
+ * It is the implementation using Google services, you only have to take
+ * care of the navigation when you receive the response.
+ *
+ * @param context . It is mandatory.
+ * @param tokenClientId your client id after created your project in
+ *    Firebase and configure Google Sign in. Is mandatory.
+ * @return Result<String> If the login was correct, result will be success and token will have a
+ *    value. If the login was not correct, result will be failure.
+ * @author Joyner
+ */
+suspend fun makeLogin(context: Context, tokenClientId: String): Result<String> {
     val credentialManager = CredentialManager.create(context)
     val googleIdOption = createGoogleIdOption(tokenClientId)
-    if (googleIdOption == null) {
-        onClick(
-            FullIntegrationResult(
-                result = false,
-                idToken = ""
-            )
-        )
+    return if (googleIdOption == null) {
+        Result.failure(exception = IllegalStateException("Google Id option is null"))
     } else {
         runCatching {
             GetCredentialRequest.Builder()
@@ -143,45 +147,22 @@ fun makeLogin(
                 .build()
         }.fold(
             onSuccess = { credentialRequest ->
-                coroutineScope.launch {
-                    runCatching {
-                        val result = credentialManager.getCredential(
-                            request = credentialRequest,
-                            context = context
-                        )
-                        val credential = result.credential
-                        val googleIdTokenCredential = GoogleIdTokenCredential.createFrom(
-                            data = credential.data
-                        )
-                        googleIdTokenCredential.idToken
-                    }.fold(
-                        onSuccess = {
-                            onClick(
-                                FullIntegrationResult(
-                                    result = true,
-                                    idToken = it
-                                )
-                            )
-                        },
-                        onFailure = {
-                            onClick(
-                                FullIntegrationResult(
-                                    result = false,
-                                    idToken = ""
-                                )
-                            )
-                        }
+                runCatching {
+                    val result = credentialManager.getCredential(
+                        request = credentialRequest,
+                        context = context
                     )
-                }
-            },
-            onFailure = {
-                onClick(
-                    FullIntegrationResult(
-                        result = false,
-                        idToken = ""
+                    val credential = result.credential
+                    val googleIdTokenCredential = GoogleIdTokenCredential.createFrom(
+                        data = credential.data
                     )
+                    googleIdTokenCredential.idToken
+                }.fold(
+                    onSuccess = { Result.success(value = it) },
+                    onFailure = { Result.failure(exception = it) }
                 )
-            }
+            },
+            onFailure = { Result.failure(exception = it) }
         )
     }
 }

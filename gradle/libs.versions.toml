@@ -5,7 +5,7 @@ minSdk = "24"
 
 # Dependencies
 activityCompose = "1.12.4"
-androidGradlePlugin = "9.0.0"
+androidGradlePlugin = "9.0.1"
 caupain = "1.8.1"
 composeBom = "2026.02.00"
 coreKtx = "1.17.0"
@@ -22,7 +22,7 @@ kotlin = "2.3.10"
 ktlint = "14.0.1"
 ktlintVersion = "1.8.0"
 lifecycleRuntimeKtx = "2.10.0"
-playServicesAuth = "21.5.0"
+playServicesAuth = "21.5.1"
 sortDependencies = "0.16"
 
 [libraries]

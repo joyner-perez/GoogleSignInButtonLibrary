@@ -4,7 +4,7 @@
 Google Sign In button for compose, it will help you to create your Google button and reduce the code you have to write.
 In the future I will be adding more features, if you have any suggestion let me know and I will analyze it.
 
-**Show app folder example for more help**
+**Open app folder example for more help**
 
 **With Kotlin**
 
@@ -21,9 +21,17 @@ In the future I will be adding more features, if you have any suggestion let me 
 
 2. Add the dependency:
 
-		dependencies {
-			implementation 'com.github.joyner-perez:GoogleSignInButtonLibrary:(insert latest version)'
-		}
+		[versions]
+        ...
+        googleSignInButton = "X.X.X" current release version
+    
+        [libraries]
+        ...
+        google-signin-button = { group = "com.github.joyner-perez", name = "GoogleSignInButtonLibrary", version.ref = "googleSignInButton" }
+
+        dependencies {
+            implementation(libs.google.signin.button)
+        }
 
 🕹 How to use:
 --
@@ -35,10 +43,25 @@ In the future I will be adding more features, if you have any suggestion let me 
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 	
- 	GoogleSignInFullButton(
-            tokenClientId = stringResource(id = R.string.default_web_client_id),// Your token client id
-            onClick = {
-                Toast.makeText(context, "Result: ${it.result}, token: ${it.idToken}", Toast.LENGTH_SHORT).show()
+ 	    GoogleSignInFullButton(
+            tokenClientId = stringResource(id = R.string.default_web_client_id),
+            onClick = { googleSignInResult ->
+                googleSignInResult.fold(
+                    onSuccess = {
+                        Toast.makeText(
+                            context,
+                            "Result: success, token: $it",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    },
+                    onFailure = {
+                        Toast.makeText(
+                            context,
+                            "Result: failure",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                )
             }
         )
 

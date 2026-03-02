@@ -3,6 +3,7 @@ plugins {
     alias libs.plugins.compose.compiler
     alias libs.plugins.detekt
     alias libs.plugins.dokka
+    alias libs.plugins.gradle.build.health
     alias libs.plugins.ktlint
     alias libs.plugins.sort.dependencies
     id("maven-publish")
@@ -52,7 +53,7 @@ publishing {
         release(MavenPublication) {
             groupId = 'com.github.joyner-perez'
             artifactId = 'GoogleSignInButtonLibrary'
-            version = '3.2.0'
+            version = '3.2.1'
 
             afterEvaluate {
                 from components.release
@@ -75,8 +76,6 @@ dokka {
 
 dependencies {
     implementation platform(libs.compose.bom)
-    implementation libs.activity.compose
-    implementation libs.core.ktx
     implementation libs.credentials
     implementation libs.credentials.play.services
     implementation libs.google.id
@@ -90,7 +89,6 @@ dependencies {
     testImplementation libs.junit
 
     androidTestImplementation platform(libs.compose.bom)
-    androidTestImplementation libs.espresso.core
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.ui.test.junit4
 

@@ -6,6 +6,7 @@ plugins {
     alias libs.plugins.detekt apply false
     alias libs.plugins.dokka apply false
     alias libs.plugins.google.services apply false
+    alias libs.plugins.gradle.build.health
     alias libs.plugins.ktlint apply false
     alias libs.plugins.sort.dependencies apply false
 }

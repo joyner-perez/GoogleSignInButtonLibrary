@@ -17,6 +17,7 @@ espressoCore = "3.7.0"
 extJunit = "1.3.0"
 googleId = "1.2.0"
 googlePlayServices = "4.4.4"
+gradleBuildHealth = "3.6.1"
 jUnit = "4.13.2"
 kotlin = "2.3.10"
 ktlint = "14.0.1"
@@ -57,5 +58,6 @@ compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
 google-services = { id = "com.google.gms.google-services", version.ref = "googlePlayServices" }
+gradle-build-health = { id = "com.autonomousapps.dependency-analysis", version.ref = "gradleBuildHealth" }
 ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint" }
 sort-dependencies = { id = "com.squareup.sort-dependencies", version.ref = "sortDependencies" }

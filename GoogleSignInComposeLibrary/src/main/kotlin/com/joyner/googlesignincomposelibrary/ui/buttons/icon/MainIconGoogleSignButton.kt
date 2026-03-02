@@ -1,9 +1,11 @@
 package com.joyner.googlesignincomposelibrary.ui.buttons.icon
 
+import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -24,13 +26,15 @@ internal fun MainIconGoogleSignButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     buttonType: ButtonType = IconStandard(),
-    enabled: Boolean = true
+    enabled: Boolean = true,
+    isLoading: Boolean = false
 ) {
     when (buttonType) {
         is IconFilled -> GoogleSignIconButtonFilled(
             modifier = modifier,
             iconButtonProperties = buttonType.iconButtonProperties,
             enabled = enabled,
+            isLoading = isLoading,
             onClick = onClick
         )
 
@@ -38,6 +42,7 @@ internal fun MainIconGoogleSignButton(
             modifier = modifier,
             iconButtonProperties = buttonType.iconButtonProperties,
             enabled = enabled,
+            isLoading = isLoading,
             onClick = onClick
         )
 
@@ -45,6 +50,7 @@ internal fun MainIconGoogleSignButton(
             modifier = modifier,
             iconButtonProperties = buttonType.iconButtonProperties,
             enabled = enabled,
+            isLoading = isLoading,
             onClick = onClick
         )
 
@@ -52,6 +58,7 @@ internal fun MainIconGoogleSignButton(
             modifier = modifier,
             iconButtonProperties = buttonType.iconButtonProperties,
             enabled = enabled,
+            isLoading = isLoading,
             onClick = onClick
         )
 
@@ -61,16 +68,28 @@ internal fun MainIconGoogleSignButton(
 
 @Composable
 internal fun MainIconGoogleSignButtonContent(
-    iconButtonProperties: IconButtonProperties = IconButtonProperties()
+    iconButtonProperties: IconButtonProperties = IconButtonProperties(),
+    isLoading: Boolean = false
 ) {
-    Icon(
-        modifier = Modifier
-            .size(size = 24.dp),
-        painter = painterResource(id = iconButtonProperties.googleIcon),
-        contentDescription = stringResource(
-            id = iconButtonProperties.googleButtonIconContentDescription
-        )
-    )
+    Crossfade(
+        targetState = isLoading,
+        label = "google_sign_in_icon_loading"
+    ) { loading ->
+        if (loading) {
+            CircularProgressIndicator(
+                modifier = Modifier.size(24.dp),
+                strokeWidth = 2.dp
+            )
+        } else {
+            Icon(
+                modifier = Modifier.size(size = 24.dp),
+                painter = painterResource(id = iconButtonProperties.googleIcon),
+                contentDescription = stringResource(
+                    id = iconButtonProperties.googleButtonIconContentDescription
+                )
+            )
+        }
+    }
 }
 
 @Preview(showBackground = true, showSystemUi = true)

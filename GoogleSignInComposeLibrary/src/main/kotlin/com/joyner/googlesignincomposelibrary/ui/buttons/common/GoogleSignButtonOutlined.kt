@@ -13,7 +13,8 @@ internal fun GoogleSignButtonOutlined(
     modifier: Modifier = Modifier,
     commonButtonProperties: CommonButtonProperties = CommonButtonProperties(),
     enabled: Boolean = true,
-    showIcon: Boolean = true
+    showIcon: Boolean = true,
+    isLoading: Boolean = false
 ) {
     OutlinedButton(
         modifier = modifier.wrapContentSize(),
@@ -22,7 +23,8 @@ internal fun GoogleSignButtonOutlined(
     ) {
         CommonSignButtonContent(
             commonButtonProperties = commonButtonProperties,
-            showIcon = showIcon
+            showIcon = showIcon,
+            isLoading = isLoading
         )
     }
 }

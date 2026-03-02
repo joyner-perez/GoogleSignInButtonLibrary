@@ -10,13 +10,17 @@ import com.joyner.googlesignincomposelibrary.models.properties.FabButtonProperti
 internal fun GoogleSignButtonFab(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
-    fabButtonProperties: FabButtonProperties = FabButtonProperties()
+    fabButtonProperties: FabButtonProperties = FabButtonProperties(),
+    isLoading: Boolean = false
 ) {
     FloatingActionButton(
         modifier = modifier,
         onClick = { onClick() }
     ) {
-        MainFabGoogleSignButtonContent(fabButtonProperties = fabButtonProperties)
+        MainFabGoogleSignButtonContent(
+            fabButtonProperties = fabButtonProperties,
+            isLoading = isLoading
+        )
     }
 }
 

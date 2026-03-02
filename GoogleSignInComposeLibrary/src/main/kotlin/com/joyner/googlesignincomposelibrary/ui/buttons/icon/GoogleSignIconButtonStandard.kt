@@ -12,15 +12,18 @@ internal fun GoogleSignIconButtonStandard(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     iconButtonProperties: IconButtonProperties = IconButtonProperties(),
-    enabled: Boolean = true
+    enabled: Boolean = true,
+    isLoading: Boolean = false
 ) {
     IconButton(
-        modifier = modifier
-            .wrapContentSize(),
+        modifier = modifier.wrapContentSize(),
         enabled = enabled,
         onClick = { onClick() }
     ) {
-        MainIconGoogleSignButtonContent(iconButtonProperties = iconButtonProperties)
+        MainIconGoogleSignButtonContent(
+            iconButtonProperties = iconButtonProperties,
+            isLoading = isLoading
+        )
     }
 }
 

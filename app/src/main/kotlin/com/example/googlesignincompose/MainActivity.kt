@@ -20,6 +20,8 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
@@ -29,6 +31,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.googlesignincompose.ui.theme.DarkColorScheme
 import com.example.googlesignincompose.ui.theme.LightColorScheme
 import com.example.googlesignincompose.ui.theme.Typography
@@ -253,7 +256,7 @@ private fun GoogleSign() {
 private fun CustomIconButton() {
     val context = LocalContext.current
     val coroutineScope = rememberCoroutineScope()
-    IconButton(
+    TextButton(
         onClick = {
             coroutineScope.launch(context = Dispatchers.IO) {
                 val result = makeLogin(
@@ -281,12 +284,8 @@ private fun CustomIconButton() {
             }
         }
     ) {
-        Icon(
-            modifier = Modifier.size(size = 24.dp),
-            painter = painterResource(
-                id = com.joyner.googlesignincomposelibrary.R.drawable.ic_google_button
-            ),
-            contentDescription = null
+        Text(
+            text = "Custom Button"
         )
     }
 }

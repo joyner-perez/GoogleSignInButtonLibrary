@@ -11,13 +11,18 @@ import com.joyner.googlesignincomposelibrary.models.properties.FabButtonProperti
 internal fun GoogleSignButtonLargeFab(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
-    fabButtonProperties: FabButtonProperties = FabButtonProperties()
+    fabButtonProperties: FabButtonProperties = FabButtonProperties(),
+    isLoading: Boolean = false
 ) {
     LargeFloatingActionButton(
         modifier = modifier,
         onClick = { onClick() }
     ) {
-        MainFabGoogleSignButtonContent(fabButtonProperties = fabButtonProperties, iconSize = 36.dp)
+        MainFabGoogleSignButtonContent(
+            fabButtonProperties = fabButtonProperties,
+            iconSize = 36.dp,
+            isLoading = isLoading
+        )
     }
 }
 

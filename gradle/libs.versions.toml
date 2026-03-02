@@ -22,7 +22,6 @@ kotlin = "2.3.10"
 ktlint = "14.0.1"
 ktlintVersion = "1.8.0"
 lifecycleRuntimeKtx = "2.10.0"
-playServicesAuth = "21.5.1"
 sortDependencies = "0.16"
 
 [libraries]
@@ -43,7 +42,6 @@ junit = { group = "junit", name = "junit", version.ref = "jUnit" }
 kotlin-bom = { group = "org.jetbrains.kotlin", name = "kotlin-bom", version.ref = "kotlin" }
 lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
 material3 = { group = "androidx.compose.material3", name = "material3" }
-play-services-auth = { group = "com.google.android.gms", name = "play-services-auth", version.ref = "playServicesAuth" }
 ui-compose = { group = "androidx.compose.ui", name = "ui" }
 ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
 ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }

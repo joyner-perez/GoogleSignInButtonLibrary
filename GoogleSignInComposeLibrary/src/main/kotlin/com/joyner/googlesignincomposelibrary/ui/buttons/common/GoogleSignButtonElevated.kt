@@ -13,7 +13,8 @@ internal fun GoogleSignButtonElevated(
     modifier: Modifier = Modifier,
     commonButtonProperties: CommonButtonProperties = CommonButtonProperties(),
     enabled: Boolean = true,
-    showIcon: Boolean = true
+    showIcon: Boolean = true,
+    isLoading: Boolean = false
 ) {
     ElevatedButton(
         modifier = modifier.wrapContentSize(),
@@ -22,7 +23,8 @@ internal fun GoogleSignButtonElevated(
     ) {
         CommonSignButtonContent(
             commonButtonProperties = commonButtonProperties,
-            showIcon = showIcon
+            showIcon = showIcon,
+            isLoading = isLoading
         )
     }
 }

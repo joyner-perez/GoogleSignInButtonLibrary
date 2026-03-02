@@ -2,7 +2,11 @@ package com.joyner.googlesignincomposelibrary.ui
 
 import android.content.Context
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
@@ -63,32 +67,40 @@ fun GoogleSignInFullButton(
 ) {
     val context = LocalContext.current
     val coroutineScope = rememberCoroutineScope()
+    var isLoading by rememberSaveable { mutableStateOf(value = false) }
 
     val onClickButton: () -> Unit = {
-        coroutineScope.launch(context = Dispatchers.IO) {
-            val result = makeLogin(
-                context = context,
-                tokenClientId = tokenClientId
-            )
-            withContext(Dispatchers.Main) {
-                onClick(result)
+        if (!isLoading) {
+            coroutineScope.launch(context = Dispatchers.IO) {
+                withContext(Dispatchers.Main) { isLoading = true }
+                val result = makeLogin(
+                    context = context,
+                    tokenClientId = tokenClientId
+                )
+                withContext(Dispatchers.Main) {
+                    isLoading = false
+                    onClick(result)
+                }
             }
         }
     }
 
     when (buttonType) {
-        is Elevated, is Filled, is FilledTonal, is Outlined, is Text -> MainCommonGoogleSignButton(
-            modifier = modifier,
-            buttonType = buttonType,
-            enabled = enabled,
-            showIcon = showIcon,
-            onClick = onClickButton
-        )
+        is Elevated, is Filled, is FilledTonal, is Outlined, is Text ->
+            MainCommonGoogleSignButton(
+                modifier = modifier,
+                buttonType = buttonType,
+                enabled = enabled && !isLoading,
+                showIcon = showIcon,
+                isLoading = isLoading,
+                onClick = onClickButton
+            )
 
         is Fab, is SmallFab, is LargeFab, is FabExtended -> MainFabGoogleSignButton(
             modifier = modifier,
             buttonType = buttonType,
             showIcon = showIcon,
+            isLoading = isLoading,
             onClick = onClickButton
         )
 
@@ -98,7 +110,8 @@ fun GoogleSignInFullButton(
         is IconStandard -> MainIconGoogleSignButton(
             modifier = modifier,
             buttonType = buttonType,
-            enabled = enabled,
+            enabled = enabled && !isLoading,
+            isLoading = isLoading,
             onClick = onClickButton
         )
     }

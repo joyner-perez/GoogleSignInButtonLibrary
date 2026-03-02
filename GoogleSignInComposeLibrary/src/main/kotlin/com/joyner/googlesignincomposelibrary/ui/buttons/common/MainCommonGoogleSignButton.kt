@@ -1,11 +1,13 @@
 package com.joyner.googlesignincomposelibrary.ui.buttons.common
 
+import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -30,7 +32,8 @@ internal fun MainCommonGoogleSignButton(
     modifier: Modifier = Modifier,
     buttonType: ButtonType = Elevated(),
     enabled: Boolean = true,
-    showIcon: Boolean = true
+    showIcon: Boolean = true,
+    isLoading: Boolean = false
 ) {
     when (buttonType) {
         is Elevated ->
@@ -39,6 +42,7 @@ internal fun MainCommonGoogleSignButton(
                 commonButtonProperties = buttonType.commonButtonProperties,
                 enabled = enabled,
                 showIcon = showIcon,
+                isLoading = isLoading,
                 onClick = onClick
             )
 
@@ -48,6 +52,7 @@ internal fun MainCommonGoogleSignButton(
                 commonButtonProperties = buttonType.commonButtonProperties,
                 enabled = enabled,
                 showIcon = showIcon,
+                isLoading = isLoading,
                 onClick = onClick
             )
 
@@ -57,6 +62,7 @@ internal fun MainCommonGoogleSignButton(
                 commonButtonProperties = buttonType.commonButtonProperties,
                 enabled = enabled,
                 showIcon = showIcon,
+                isLoading = isLoading,
                 onClick = onClick
             )
 
@@ -66,6 +72,7 @@ internal fun MainCommonGoogleSignButton(
                 commonButtonProperties = buttonType.commonButtonProperties,
                 enabled = enabled,
                 showIcon = showIcon,
+                isLoading = isLoading,
                 onClick = onClick
             )
 
@@ -75,6 +82,7 @@ internal fun MainCommonGoogleSignButton(
                 commonButtonProperties = buttonType.commonButtonProperties,
                 enabled = enabled,
                 showIcon = showIcon,
+                isLoading = isLoading,
                 onClick = onClick
             )
 
@@ -86,30 +94,43 @@ internal fun MainCommonGoogleSignButton(
 internal fun CommonSignButtonContent(
     modifier: Modifier = Modifier,
     commonButtonProperties: CommonButtonProperties = CommonButtonProperties(),
-    showIcon: Boolean = true
+    showIcon: Boolean = true,
+    isLoading: Boolean = false
 ) {
-    Row(
+    Crossfade(
         modifier = modifier,
-        horizontalArrangement = Arrangement.Center,
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        if (showIcon) {
-            Icon(
-                modifier = Modifier
-                    .padding(end = commonButtonProperties.spaceBetweenIconAndText.dp)
-                    .size(size = commonButtonProperties.googleIconSize.dp),
-                tint = commonButtonProperties.googleIconColor,
-                painter = painterResource(id = commonButtonProperties.googleIcon),
-                contentDescription = stringResource(
-                    id = commonButtonProperties.googleButtonIconContentDescription
-                )
+        targetState = isLoading,
+        label = "google_sign_in_loading"
+    ) { loading ->
+        if (loading) {
+            CircularProgressIndicator(
+                modifier = Modifier.size(commonButtonProperties.googleIconSize.dp),
+                strokeWidth = 2.dp
             )
+        } else {
+            Row(
+                horizontalArrangement = Arrangement.Center,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                if (showIcon) {
+                    Icon(
+                        modifier = Modifier
+                            .padding(end = commonButtonProperties.spaceBetweenIconAndText.dp)
+                            .size(size = commonButtonProperties.googleIconSize.dp),
+                        tint = commonButtonProperties.googleIconColor,
+                        painter = painterResource(id = commonButtonProperties.googleIcon),
+                        contentDescription = stringResource(
+                            id = commonButtonProperties.googleButtonIconContentDescription
+                        )
+                    )
+                }
+                Text(
+                    text = stringResource(id = commonButtonProperties.googleButtonText),
+                    fontSize = commonButtonProperties.googleButtonTextSize.sp,
+                    color = commonButtonProperties.textButtonColor
+                )
+            }
         }
-        Text(
-            text = stringResource(id = commonButtonProperties.googleButtonText),
-            fontSize = commonButtonProperties.googleButtonTextSize.sp,
-            color = commonButtonProperties.textButtonColor
-        )
     }
 }
 

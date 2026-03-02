@@ -81,7 +81,6 @@ dependencies {
     implementation libs.credentials.play.services
     implementation libs.google.id
     implementation libs.material3
-    implementation libs.play.services.auth
     implementation libs.ui.compose
     implementation libs.ui.tooling.preview
 

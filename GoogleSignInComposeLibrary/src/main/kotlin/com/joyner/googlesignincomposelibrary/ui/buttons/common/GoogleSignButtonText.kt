@@ -13,7 +13,8 @@ internal fun GoogleSignButtonText(
     modifier: Modifier = Modifier,
     commonButtonProperties: CommonButtonProperties = CommonButtonProperties(),
     enabled: Boolean = true,
-    showIcon: Boolean = true
+    showIcon: Boolean = true,
+    isLoading: Boolean = false
 ) {
     TextButton(
         modifier = modifier.wrapContentSize(),
@@ -22,7 +23,8 @@ internal fun GoogleSignButtonText(
     ) {
         CommonSignButtonContent(
             commonButtonProperties = commonButtonProperties,
-            showIcon = showIcon
+            showIcon = showIcon,
+            isLoading = isLoading
         )
     }
 }

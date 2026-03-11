@@ -1,4 +1,4 @@
-[![](https://jitpack.io/v/joyner-perez/GoogleSignInButtonLibrary.svg)](https://jitpack.io/#joyner-perez/GoogleSignInButtonLibrary)
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.joyner-perez/GoogleSignInButtonLibrary.svg)](https://central.sonatype.com/artifact/io.github.joyner-perez/GoogleSignInButtonLibrary)
 # Google Sign In button library for jetpack compose
 
 Google Sign In button for compose, it will help you to create your Google button and reduce the code you have to write.
@@ -15,7 +15,7 @@ In the future I will be adding more features, if you have any suggestion let me 
 		allprojects {
 			repositories {
 				...
-				maven { url 'https://jitpack.io' }
+				mavenCentral()
 			}
 		}
 

@@ -5,7 +5,7 @@ minSdk = "24"
 
 # Dependencies
 activityCompose = "1.12.4"
-androidGradlePlugin = "9.0.1"
+androidGradlePlugin = "9.1.0"
 caupain = "1.8.1"
 composeBom = "2026.02.01"
 coreKtx = "1.17.0"
@@ -20,9 +20,10 @@ googlePlayServices = "4.4.4"
 gradleBuildHealth = "3.6.1"
 jUnit = "4.13.2"
 kotlin = "2.3.10"
-ktlint = "14.0.1"
+ktlint = "14.1.0"
 ktlintVersion = "1.8.0"
 lifecycleRuntimeKtx = "2.10.0"
+mavenPublishPlugin = "0.36.0"
 sortDependencies = "0.16"
 
 [libraries]
@@ -60,4 +61,5 @@ dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
 google-services = { id = "com.google.gms.google-services", version.ref = "googlePlayServices" }
 gradle-build-health = { id = "com.autonomousapps.dependency-analysis", version.ref = "gradleBuildHealth" }
 ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint" }
+maven-publish = { id = "com.vanniktech.maven.publish", version.ref = "mavenPublishPlugin" }
 sort-dependencies = { id = "com.squareup.sort-dependencies", version.ref = "sortDependencies" }

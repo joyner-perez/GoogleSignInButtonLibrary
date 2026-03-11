@@ -28,7 +28,7 @@ A pre-commit hook (`.scripts/pre-commit`) is auto-installed via `settings.gradle
 
 ## Architecture
 
-This is a Jetpack Compose Android library (`GoogleSignInComposeLibrary` module) published via JitPack. The `app` module is an example/demo only.
+This is a Jetpack Compose Android library (`GoogleSignInComposeLibrary` module) published via Maven Central. The `app` module is an example/demo only.
 
 **Two public composables:**
 - `GoogleSignInButton` — UI-only button, calls `onClick: () -> Unit`

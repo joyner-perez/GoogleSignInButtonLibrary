@@ -1,3 +1,7 @@
+import java.nio.file.Files
+import java.nio.file.StandardCopyOption
+import java.nio.file.attribute.PosixFilePermissions
+
 pluginManagement {
     repositories {
         gradlePluginPortal()
@@ -13,38 +17,34 @@ dependencyResolutionManagement {
     }
 }
 
-import java.nio.file.Files
-import java.nio.file.StandardCopyOption
-import java.nio.file.attribute.PosixFilePermissions
-
-def hooksDir   = rootDir.toPath().resolve(".git/hooks")
-def targetHook = hooksDir.resolve("pre-commit")
-def sourceHook = rootDir.toPath().resolve(".scripts/pre-commit")
+val hooksDir = rootDir.toPath().resolve(".git/hooks")
+val targetHook = hooksDir.resolve("pre-commit")
+val sourceHook = rootDir.toPath().resolve(".scripts/pre-commit")
 
 // 1) Asegura que el origen exista
 if (Files.notExists(sourceHook)) {
-    throw new GradleException("❌ No existe el hook fuente: ${sourceHook}. ¿Está en .scripts/pre-commit?")
+    throw GradleException("❌ No existe el hook fuente: $sourceHook. ¿Está en .scripts/pre-commit?")
 }
 
 // 2) Asegura que exista .git/hooks
 Files.createDirectories(hooksDir)
 
 // 3) Copia SIEMPRE (o cuando cambie)
-println "🔧 Installing Git hook pre-commit…"
+println("🔧 Installing Git hook pre-commit…")
 Files.copy(sourceHook, targetHook, StandardCopyOption.REPLACE_EXISTING)
 
 // 4) Permisos (en Windows esto puede no aplicar y no pasa nada)
 try {
     Files.setPosixFilePermissions(
-            targetHook,
-            PosixFilePermissions.fromString("rwxr-xr-x")
+        targetHook,
+        PosixFilePermissions.fromString("rwxr-xr-x")
     )
-} catch (Throwable ignored) {
+} catch (_: Throwable) {
     // Windows / FS sin POSIX
 }
 
-println "✅ Hook installed at ${targetHook}"
+println("✅ Hook installed at $targetHook")
 
 rootProject.name = "GoogleSignInButtonLibrary"
-include ':app'
-include ':GoogleSignInComposeLibrary'
+include(":app")
+include(":GoogleSignInComposeLibrary")

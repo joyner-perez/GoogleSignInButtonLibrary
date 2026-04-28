@@ -13,7 +13,7 @@ plugins {
     alias(libs.plugins.sort.dependencies) apply false
 }
 
-val ktLintVersion: String = libs.versions.ktlintVersion.get() ?: "1.8.0"
+val ktLintVersion: String = libs.versions.ktlintVersion.get()
 
 subprojects {
     apply(plugin = "org.jlleitschuh.gradle.ktlint")

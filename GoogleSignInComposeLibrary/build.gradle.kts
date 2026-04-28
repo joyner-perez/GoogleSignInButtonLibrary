@@ -43,7 +43,11 @@ mavenPublishing {
     publishToMavenCentral()
     signAllPublications()
 
-    coordinates("io.github.joyner-perez", "GoogleSignInButtonLibrary", "3.2.2")
+    coordinates(
+        groupId = "io.github.joyner-perez",
+        artifactId = "GoogleSignInButtonLibrary",
+        version = "3.2.3"
+    )
 
     pom {
         name.set("GoogleSignInButtonLibrary")

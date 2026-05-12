@@ -46,7 +46,7 @@ mavenPublishing {
     coordinates(
         groupId = "io.github.joyner-perez",
         artifactId = "GoogleSignInButtonLibrary",
-        version = "3.2.3"
+        version = "3.2.4"
     )
 
     pom {

@@ -14,6 +14,8 @@ import com.joyner.googlesignincomposelibrary.R
  * @param googleIconSize [Int]. size of the icon. Default is 18.dp.
  * @param spaceBetweenIconAndText [Int] space between the icon and text. Default is 8.dp.
  * @param textButtonColor [Color] color of the text. Default is [Color.Unspecified].
+ * @param googleIcon [Int] resource of icon if you need use other.
+ * Default is [R.drawable.ic_google_button].
  * @author Joyner
  */
 data class CommonButtonProperties(
@@ -23,5 +25,6 @@ data class CommonButtonProperties(
     val googleButtonTextSize: Int = 14,
     val googleIconSize: Int = 18,
     val spaceBetweenIconAndText: Int = 8,
-    val textButtonColor: Color = Color.Unspecified
-) : ButtonProperties()
+    val textButtonColor: Color = Color.Unspecified,
+    override val googleIcon: Int = R.drawable.ic_google_button
+) : ButtonProperties(googleIcon = googleIcon)

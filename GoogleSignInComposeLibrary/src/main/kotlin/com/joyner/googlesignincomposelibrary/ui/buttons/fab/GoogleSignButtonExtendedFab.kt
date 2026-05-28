@@ -12,12 +12,15 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.joyner.googlesignincomposelibrary.models.properties.FabExtendedButtonProperties
+import com.joyner.googlesignincomposelibrary.models.properties.GoogleIcon
+import com.joyner.googlesignincomposelibrary.models.properties.GoogleText
 
 @Composable
 internal fun GoogleSignButtonExtendedFab(
@@ -45,22 +48,33 @@ internal fun GoogleSignButtonExtendedFab(
                     horizontalArrangement = Arrangement.Center,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
+                    val iconPainter = when (val icon = fabExtendedButtonProperties.googleIcon) {
+                        is GoogleIcon.WithResource -> painterResource(icon.id)
+                        is GoogleIcon.WithVector -> rememberVectorPainter(icon.imageVector)
+                        is GoogleIcon.WithPainter -> icon.painter
+                    }
+                    val iconContentDesc = when (
+                        val t = fabExtendedButtonProperties.googleButtonIconContentDescription
+                    ) {
+                        is GoogleText.Resource -> stringResource(t.id)
+                        is GoogleText.Value -> t.text
+                    }
+                    val buttonText = when (val t = fabExtendedButtonProperties.googleButtonText) {
+                        is GoogleText.Resource -> stringResource(t.id)
+                        is GoogleText.Value -> t.text
+                    }
                     if (showIcon) {
                         Icon(
                             modifier = Modifier
                                 .padding(end = 16.dp)
                                 .size(size = 24.dp),
                             tint = fabExtendedButtonProperties.googleIconColor,
-                            painter = painterResource(
-                                id = fabExtendedButtonProperties.googleIcon
-                            ),
-                            contentDescription = stringResource(
-                                id = fabExtendedButtonProperties.googleButtonIconContentDescription
-                            )
+                            painter = iconPainter,
+                            contentDescription = iconContentDesc
                         )
                     }
                     Text(
-                        text = stringResource(id = fabExtendedButtonProperties.googleButtonText),
+                        text = buttonText,
                         fontSize = fabExtendedButtonProperties.googleButtonTextSize.sp,
                         color = fabExtendedButtonProperties.textButtonColor
                     )

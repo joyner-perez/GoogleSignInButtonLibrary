@@ -20,11 +20,13 @@ import com.joyner.googlesignincomposelibrary.R
  */
 data class CommonButtonProperties(
     val googleIconColor: Color = Color.Unspecified,
-    val googleButtonText: Int = R.string.button_login_google,
-    val googleButtonIconContentDescription: Int = R.string.default_icon_google_content_description,
+    val googleButtonText: GoogleText = GoogleText.Resource(R.string.button_login_google),
+    val googleButtonIconContentDescription: GoogleText = GoogleText.Resource(
+        R.string.default_icon_google_content_description
+    ),
     val googleButtonTextSize: Int = 14,
     val googleIconSize: Int = 18,
     val spaceBetweenIconAndText: Int = 8,
     val textButtonColor: Color = Color.Unspecified,
-    override val googleIcon: Int = R.drawable.ic_google_button
+    override val googleIcon: GoogleIcon = GoogleIcon.WithResource(R.drawable.ic_google_button)
 ) : ButtonProperties(googleIcon = googleIcon)

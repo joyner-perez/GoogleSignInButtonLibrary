@@ -14,6 +14,8 @@ import com.joyner.googlesignincomposelibrary.R
  * @author Joyner
  */
 open class IconButtonProperties(
-    val googleButtonIconContentDescription: Int = R.string.default_icon_google_content_description,
-    override val googleIcon: Int = R.drawable.ic_google_button
+    val googleButtonIconContentDescription: GoogleText = GoogleText.Resource(
+        R.string.default_icon_google_content_description
+    ),
+    override val googleIcon: GoogleIcon = GoogleIcon.WithResource(R.drawable.ic_google_button)
 ) : ButtonProperties(googleIcon = googleIcon)

@@ -7,4 +7,4 @@ package com.joyner.googlesignincomposelibrary.models.properties
  *
  * @author Joyner
  */
-sealed class ButtonProperties(open val googleIcon: Int)
+sealed class ButtonProperties(open val googleIcon: GoogleIcon)

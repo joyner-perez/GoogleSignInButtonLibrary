@@ -13,12 +13,15 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.joyner.googlesignincomposelibrary.models.properties.CommonButtonProperties
+import com.joyner.googlesignincomposelibrary.models.properties.GoogleIcon
+import com.joyner.googlesignincomposelibrary.models.properties.GoogleText
 import com.joyner.googlesignincomposelibrary.models.types.ButtonType
 import com.joyner.googlesignincomposelibrary.models.types.Elevated
 import com.joyner.googlesignincomposelibrary.models.types.Filled
@@ -112,20 +115,33 @@ internal fun CommonSignButtonContent(
                 horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically
             ) {
+                val iconPainter = when (val icon = commonButtonProperties.googleIcon) {
+                    is GoogleIcon.WithResource -> painterResource(icon.id)
+                    is GoogleIcon.WithVector -> rememberVectorPainter(image = icon.imageVector)
+                    is GoogleIcon.WithPainter -> icon.painter
+                }
+                val iconContentDesc = when (
+                    val t = commonButtonProperties.googleButtonIconContentDescription
+                ) {
+                    is GoogleText.Resource -> stringResource(t.id)
+                    is GoogleText.Value -> t.text
+                }
+                val buttonText = when (val t = commonButtonProperties.googleButtonText) {
+                    is GoogleText.Resource -> stringResource(t.id)
+                    is GoogleText.Value -> t.text
+                }
                 if (showIcon) {
                     Icon(
                         modifier = Modifier
                             .padding(end = commonButtonProperties.spaceBetweenIconAndText.dp)
                             .size(size = commonButtonProperties.googleIconSize.dp),
                         tint = commonButtonProperties.googleIconColor,
-                        painter = painterResource(id = commonButtonProperties.googleIcon),
-                        contentDescription = stringResource(
-                            id = commonButtonProperties.googleButtonIconContentDescription
-                        )
+                        painter = iconPainter,
+                        contentDescription = iconContentDesc
                     )
                 }
                 Text(
-                    text = stringResource(id = commonButtonProperties.googleButtonText),
+                    text = buttonText,
                     fontSize = commonButtonProperties.googleButtonTextSize.sp,
                     color = commonButtonProperties.textButtonColor
                 )

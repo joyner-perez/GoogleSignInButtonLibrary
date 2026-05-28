@@ -15,7 +15,7 @@ import com.joyner.googlesignincomposelibrary.R
  * @author Joyner
  */
 data class FabExtendedButtonProperties(
-    val googleButtonText: Int = R.string.button_login_google,
+    val googleButtonText: GoogleText = GoogleText.Resource(R.string.button_login_google),
     val googleButtonTextSize: Int = 14,
     val googleIconColor: Color = Color.Unspecified,
     val textButtonColor: Color = Color.Unspecified

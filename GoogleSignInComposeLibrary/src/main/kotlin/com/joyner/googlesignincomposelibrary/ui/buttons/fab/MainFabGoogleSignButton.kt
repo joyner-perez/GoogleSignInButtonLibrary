@@ -11,12 +11,15 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.joyner.googlesignincomposelibrary.models.properties.FabButtonProperties
+import com.joyner.googlesignincomposelibrary.models.properties.GoogleIcon
+import com.joyner.googlesignincomposelibrary.models.properties.GoogleText
 import com.joyner.googlesignincomposelibrary.models.types.ButtonType
 import com.joyner.googlesignincomposelibrary.models.types.Fab
 import com.joyner.googlesignincomposelibrary.models.types.FabExtended
@@ -83,13 +86,22 @@ internal fun MainFabGoogleSignButtonContent(
                 strokeWidth = 2.dp
             )
         } else {
+            val iconPainter = when (val icon = fabButtonProperties.googleIcon) {
+                is GoogleIcon.WithResource -> painterResource(icon.id)
+                is GoogleIcon.WithVector -> rememberVectorPainter(icon.imageVector)
+                is GoogleIcon.WithPainter -> icon.painter
+            }
+            val iconContentDesc = when (
+                val t = fabButtonProperties.googleButtonIconContentDescription
+            ) {
+                is GoogleText.Resource -> stringResource(t.id)
+                is GoogleText.Value -> t.text
+            }
             Icon(
                 modifier = Modifier.size(size = iconSize),
                 tint = MaterialTheme.colorScheme.primary,
-                painter = painterResource(id = fabButtonProperties.googleIcon),
-                contentDescription = stringResource(
-                    id = fabButtonProperties.googleButtonIconContentDescription
-                )
+                painter = iconPainter,
+                contentDescription = iconContentDesc
             )
         }
     }

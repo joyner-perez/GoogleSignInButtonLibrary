@@ -1,4 +1,5 @@
 import java.nio.file.Files
+import java.nio.file.Path
 import java.nio.file.StandardCopyOption
 import java.nio.file.attribute.PosixFilePermissions
 
@@ -20,9 +21,9 @@ dependencyResolutionManagement {
     }
 }
 
-val hooksDir = rootDir.toPath().resolve(".git/hooks")
-val targetHook = hooksDir.resolve("pre-commit")
-val sourceHook = rootDir.toPath().resolve(".scripts/pre-commit")
+val hooksDir: Path = rootDir.toPath().resolve(".git/hooks")
+val targetHook: Path = hooksDir.resolve("pre-commit")
+val sourceHook: Path = rootDir.toPath().resolve(".scripts/pre-commit")
 
 if (Files.notExists(sourceHook)) {
     throw GradleException("❌ No existe el hook fuente: $sourceHook. ¿Está en .scripts/pre-commit?")
